@@ -1,0 +1,24 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+/* Center the card vertically (50vh) */
+.center-viewport {
+	min-height: 50vh;
+}
+
+/* Fixed card width (responsive-friendly) */
+.card-sm {
+	width: 15rem;
+	max-width: 90%;
+    border: 2px solid;
+    border-color: black;
+}
+
+/* Icon circle size and icon scale */
+.icon-circle {
+	width: 55px;
+	height: 55px;
+}
+.icon-circle i {
+	font-size: 22px;
+}
+
