@@ -12,7 +12,8 @@ export const environment = {
     storageBucket: "angular-delivery-6ddae.firebasestorage.app",
     messagingSenderId: "741548381752",
     appId: "1:741548381752:web:4870af438b82b6f528f8cd"
-  }
+  },
+  url_graficas: "https://7e7398ce-1119-4893-bb8b-fe248a1aeec4.mock.pstmn.io"
 };
 
 /*

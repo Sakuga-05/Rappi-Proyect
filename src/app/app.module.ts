@@ -1,4 +1,5 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -18,6 +19,8 @@ import { AngularFireModule} from '@angular/fire/compat';
 import { AngularFireAuthModule} from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { NgChartsModule } from 'ng2-charts';
+import { GraficasComponent } from './pages/graficas/graficas.component';
 
 @NgModule({
   imports: [
@@ -27,6 +30,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     ComponentsModule,
     NgbModule,
     RouterModule,
+    NgChartsModule,
+    BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
@@ -36,7 +41,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    RestaurantComponent
+    RestaurantComponent,
+    GraficasComponent
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

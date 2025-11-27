@@ -1,0 +1,47 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8"></div>
+    <!-- Page content -->
+    <div class="container-fluid mt--7">
+        <!-- src/app/charts-view/charts-view.component.html -->
+        <div class="charts-container">
+        <div *ngIf="loading" class="loader">Cargando gráficos...</div>
+        <div *ngIf="error" class="error">{{ error }}</div>
+
+        <div *ngIf="!loading && !error" class="grid">
+            <!-- Primero las 3 pie -->
+            <ng-container *ngFor="let p of pieConfigs">
+            <div class="card">
+                <h3>{{ p.title }}</h3>
+                <canvas baseChart
+                [data]="p.data.data"
+                [type]="p.data.type"
+                [options]="p.data.options">
+                </canvas>
+            </div>
+            </ng-container>
+
+            <!-- luego 3 barras -->
+            <ng-container *ngFor="let b of barConfigs">
+            <div class="card">
+                <h3>{{ b.title }}</h3>
+                <canvas baseChart
+                [data]="b.data.data"
+                [type]="b.data.type"
+                [options]="b.data.options">
+                </canvas>
+            </div>
+            </ng-container>
+
+            <!-- luego 3 lineas (series) -->
+            <ng-container *ngFor="let l of lineConfigs">
+            <div class="card">
+                <h3>{{ l.title }}</h3>
+                <canvas baseChart
+                [data]="l.data.data"
+                [type]="l.data.type"
+                [options]="l.data.options">
+                </canvas>
+            </div>
+            </ng-container>
+        </div>
+    </div>
+</div>
