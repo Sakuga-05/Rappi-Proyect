@@ -71,7 +71,7 @@ export class SecurityService {
     firebaseUser.getIdToken().then((token: string) => {
       const user: User = {
         id: firebaseUser.uid,
-        name: firebaseUser.displayName || "",
+        name: firebaseUser.displayName || firebaseUser.email,
         email: firebaseUser.email || "",
         password: "",
         token: token,
