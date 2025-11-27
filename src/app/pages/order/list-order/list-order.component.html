@@ -1,0 +1,46 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8"></div>
+<div class="container-fluid mt--7">
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
+                    <h3 class="mb-0">Pedidos</h3>
+                    <div>
+                        <button class="btn btn-info btn-md mr-2" [routerLink]="['/orders/create']">Crear</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped table-hover table-bordered align-middle">
+                        <thead class="bg-blue text-white">
+                            <tr>
+                                <th class="px-4 py-3">Cliente</th>
+                                <th class="px-4 py-3">Total</th>
+                                <th class="px-4 py-3">Estado</th>
+                                <th class="px-4 py-3">Fecha</th>
+                                <th class="px-4 py-3">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let order of orders">
+                                <td class="px-4 py-3">{{ getCustomerName(order.customer_id) }}</td>
+                                <td class="px-4 py-3">${{ order.total }}</td>
+                                <td class="px-4 py-3">
+                                    <span *ngIf="order.status === 'pending'" class="badge badge-warning">Pendiente</span>
+                                    <span *ngIf="order.status === 'preparing'" class="badge badge-info">Preparando</span>
+                                    <span *ngIf="order.status === 'ready'" class="badge badge-success">Listo</span>
+                                    <span *ngIf="order.status === 'delivered'" class="badge badge-primary">Entregado</span>
+                                </td>
+                                <td class="px-4 py-3">{{ order.created_at | date: 'short' }}</td>
+                                <td class="px-4 py-3">
+                                    <button class="btn btn-warning btn-sm mr-2" [routerLink]="['/orders/view', order.id]">Info</button>
+                                    <button class="btn btn-warning btn-sm mr-2" [routerLink]="['/orders/update', order.id]">Editar</button>
+                                    <button class="btn btn-danger btn-sm" (click)="deleteOrder(order.id)">Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
