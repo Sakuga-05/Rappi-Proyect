@@ -16,6 +16,7 @@
                                 <th class="px-4 py-3">Cliente</th>
                                 <th class="px-4 py-3">Total</th>
                                 <th class="px-4 py-3">Estado</th>
+                                <th class="px-4 py-3">Dirección</th>
                                 <th class="px-4 py-3">Fecha</th>
                                 <th class="px-4 py-3">Opciones</th>
                             </tr>
@@ -30,6 +31,7 @@
                                     <span *ngIf="order.status === 'ready'" class="badge badge-success">Listo</span>
                                     <span *ngIf="order.status === 'delivered'" class="badge badge-primary">Entregado</span>
                                 </td>
+                                <td class="px-4 py-3">{{ getAddressInfo(order.address_id) }}</td>
                                 <td class="px-4 py-3">{{ order.created_at | date: 'short' }}</td>
                                 <td class="px-4 py-3">
                                     <button class="btn btn-warning btn-sm mr-2" [routerLink]="['/orders/view', order.id]">Info</button>

@@ -1,0 +1,126 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8"></div>
+<div class="container-fluid mt--7">
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header bg-transparent">
+                    <h3 class="mb-0" *ngIf="!editMode && !viewMode">Crear Inconveniente</h3>
+                    <h3 class="mb-0" *ngIf="editMode">Editar Inconveniente</h3>
+                    <h3 class="mb-0" *ngIf="viewMode">Ver Inconveniente</h3>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="form" (ngSubmit)="save()">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Motocicleta *</label>
+                                    <select class="form-control" formControlName="motorcycle_id">
+                                        <option [value]="0">Seleccione</option>
+                                        <option *ngFor="let m of motorcycles" [value]="m.id">
+                                            {{ m.license_plate }} - {{ m.brand }}
+                                        </option>
+                                    </select>
+                                    <div *ngIf="form.get('motorcycle_id')?.invalid && form.get('motorcycle_id')?.touched" class="text-danger">
+                                        Seleccione una motocicleta
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Tipo de Inconveniente *</label>
+                                    <select class="form-control" formControlName="issue_type">
+                                        <option value="">Seleccione</option>
+                                        <option value="accident">Accidente</option>
+                                        <option value="maintenance">Mantenimiento</option>
+                                        <option value="flat_tire">Llanta Pinchada</option>
+                                        <option value="other">Otro</option>
+                                    </select>
+                                    <div *ngIf="form.get('issue_type')?.invalid && form.get('issue_type')?.touched" class="text-danger">
+                                        Seleccione un tipo
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Descripción *</label>
+                                    <textarea class="form-control" formControlName="description" rows="3"></textarea>
+                                    <div *ngIf="form.get('description')?.invalid && form.get('description')?.touched" class="text-danger">
+                                        La descripción es obligatoria
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Estado *</label>
+                                    <select class="form-control" formControlName="status">
+                                        <option value="reported">Reportado</option>
+                                        <option value="in_progress">En Progreso</option>
+                                        <option value="resolved">Resuelto</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Fecha Reportada *</label>
+                                    <input type="datetime-local" class="form-control" formControlName="date_reported">
+                                    <div *ngIf="form.get('date_reported')?.invalid && form.get('date_reported')?.touched" class="text-danger">
+                                        La fecha es obligatoria
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Fotos Existentes -->
+                            <div class="col-md-12" *ngIf="existingPhotos.length > 0">
+                                <div class="form-group">
+                                    <label>Fotos Actuales</label>
+                                    <div class="d-flex flex-wrap">
+                                        <div *ngFor="let photo of existingPhotos" class="position-relative m-2">
+                                            <img [src]="photo.image_url" alt="Foto" style="width: 150px; height: 150px; object-fit: cover; border: 1px solid #ddd; border-radius: 5px;">
+                                            <button type="button" class="btn btn-danger btn-sm position-absolute" style="top: 5px; right: 5px;" (click)="removeExistingPhoto(photo)" *ngIf="!viewMode">
+                                                <i class="bi bi-x"></i>
+                                            </button>
+                                            <p class="text-center text-muted small mt-1">{{ photo.caption }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Subir Nuevas Fotos -->
+                            <div class="col-md-12" *ngIf="!viewMode">
+                                <div class="form-group">
+                                    <label>Agregar Fotos</label>
+                                    <input type="file" class="form-control-file" accept="image/*" multiple (change)="onFileSelect($event)">
+                                    <small class="form-text text-muted">Puede seleccionar múltiples fotos</small>
+                                </div>
+                            </div>
+
+                            <!-- Preview de Nuevas Fotos -->
+                            <div class="col-md-12" *ngIf="newPhotos.length > 0">
+                                <div class="form-group">
+                                    <label>Fotos a Subir</label>
+                                    <div class="d-flex flex-wrap">
+                                        <div *ngFor="let photo of newPhotos; let i = index" class="position-relative m-2">
+                                            <img [src]="photo.preview" alt="Preview" style="width: 150px; height: 150px; object-fit: cover; border: 1px solid #ddd; border-radius: 5px;">
+                                            <button type="button" class="btn btn-danger btn-sm position-absolute" style="top: 5px; right: 5px;" (click)="removeNewPhoto(i)">
+                                                <i class="bi bi-x"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-success" *ngIf="!viewMode">Guardar</button>
+                                <button type="button" class="btn btn-secondary ml-2" (click)="cancel()">{{ viewMode ? 'Volver' : 'Cancelar' }}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

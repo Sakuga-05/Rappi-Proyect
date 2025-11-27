@@ -1,0 +1,45 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8"></div>
+<div class="container-fluid mt--7">
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
+                    <h3 class="mb-0">Motocicletas</h3>
+                    <button class="btn btn-info btn-md" [routerLink]="['/motorcycles/create']">Crear</button>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped table-hover table-bordered align-middle">
+                        <thead class="bg-blue text-white">
+                            <tr>
+                                <th class="px-4 py-3">ID</th>
+                                <th class="px-4 py-3">Placa</th>
+                                <th class="px-4 py-3">Marca</th>
+                                <th class="px-4 py-3">Año</th>
+                                <th class="px-4 py-3">Estado</th>
+                                <th class="px-4 py-3">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let moto of motorcycles">
+                                <td class="px-4 py-3">{{ moto.id }}</td>
+                                <td class="px-4 py-3">{{ moto.license_plate }}</td>
+                                <td class="px-4 py-3">{{ moto.brand }}</td>
+                                <td class="px-4 py-3">{{ moto.year }}</td>
+                                <td class="px-4 py-3">
+                                    <span *ngIf="moto.status === 'available'" class="badge badge-success">Disponible</span>
+                                    <span *ngIf="moto.status === 'in_use'" class="badge badge-primary">En Uso</span>
+                                    <span *ngIf="moto.status === 'maintenance'" class="badge badge-warning">Mantenimiento</span>
+                                </td>
+                                <td class="px-4 py-3">
+                                    <button class="btn btn-warning btn-sm mr-2" [routerLink]="['/motorcycles/view', moto.id]">Info</button>
+                                    <button class="btn btn-warning btn-sm mr-2" [routerLink]="['/motorcycles/update', moto.id]">Editar</button>
+                                    <button class="btn btn-danger btn-sm" (click)="deleteMotorcycle(moto.id)">Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

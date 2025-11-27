@@ -1,1 +1,106 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Estilos globales para mejorar responsividad y consistencia */
+
+/* Asegurar que las tablas sean responsive */
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mejorar espaciado en dispositivos móviles */
+@media (max-width: 768px) {
+  .container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .card {
+    margin-bottom: 1rem;
+  }
+
+  .btn-block {
+    width: 100%;
+  }
+
+  /* Reducir padding en tablas móviles */
+  .table td, .table th {
+    padding: 0.5rem !important;
+    font-size: 0.875rem;
+  }
+
+  /* Ajustar botones en móviles */
+  .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  /* Ajustar cards de navegación */
+  .card-sm {
+    max-width: 100% !important;
+    margin: 0.5rem;
+  }
+}
+
+/* Clase personalizada para encabezados de tabla */
+.bg-blue {
+  background-color: #5e72e4 !important;
+}
+
+/* Asegurar que los badges sean visibles */
+.badge {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.375rem;
+}
+
+/* Mejorar espaciado de botones en grupos */
+.btn + .btn {
+  margin-left: 0.25rem;
+}
+
+/* Asegurar que los íconos circulares sean consistentes */
+.icon-circle {
+  width: 80px;
+  height: 80px;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mejorar apariencia de forms */
+.form-control {
+  border-radius: 0.375rem;
+  border: 1px solid #dee2e6;
+}
+
+.form-control:focus {
+  border-color: #5e72e4;
+  box-shadow: 0 0 0 0.2rem rgba(94, 114, 228, 0.25);
+}
+
+/* Mejorar sombras de cards */
+.card.shadow {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Bordes consistentes */
+.border-dark {
+  border-color: #212529 !important;
+  border-width: 2px !important;
+}
+
+/* Asegurar consistencia en altura de filas */
+.align-middle td,
+.align-middle th {
+  vertical-align: middle !important;
+}
+

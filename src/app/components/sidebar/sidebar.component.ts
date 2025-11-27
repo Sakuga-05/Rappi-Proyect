@@ -13,6 +13,10 @@ export const ROUTES: RouteInfo[] = [
     { path: '/users', title: 'Usuarios',  icon:'ni-single-02 text-orange', class: '' },
     { path: '/orders/list', title: 'Pedidos',  icon:'ni-cart-simple text-red', class: '' },
     { path: '/addresses/list', title: 'Direcciones',  icon:'ni-pin-3 text-yellow', class: '' },
+    { path: '/motorcycles/list', title: 'Motocicletas',  icon:'ni-delivery-fast text-blue', class: '' },
+    { path: '/drivers/list', title: 'Conductores',  icon:'ni-circle-08 text-green', class: '' },
+    { path: '/shifts/list', title: 'Turnos',  icon:'ni-time-alarm text-purple', class: '' },
+    { path: '/issues/list', title: 'Inconvenientes',  icon:'ni-ui-04 text-danger', class: '' },
 ];
 
 @Component({

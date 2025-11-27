@@ -1,0 +1,47 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8"></div>
+<div class="container-fluid mt--7">
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
+                    <h3 class="mb-0">Turnos</h3>
+                    <button class="btn btn-info btn-md" [routerLink]="['/shifts/create']">Crear</button>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped table-hover table-bordered align-middle">
+                        <thead class="bg-blue text-white">
+                            <tr>
+                                <th class="px-4 py-3">ID</th>
+                                <th class="px-4 py-3">Conductor</th>
+                                <th class="px-4 py-3">Motocicleta</th>
+                                <th class="px-4 py-3">Inicio</th>
+                                <th class="px-4 py-3">Fin</th>
+                                <th class="px-4 py-3">Estado</th>
+                                <th class="px-4 py-3">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let shift of shifts">
+                                <td class="px-4 py-3">{{ shift.id }}</td>
+                                <td class="px-4 py-3">{{ getDriverName(shift.driver_id) }}</td>
+                                <td class="px-4 py-3">{{ getMotorcyclePlate(shift.motorcycle_id) }}</td>
+                                <td class="px-4 py-3">{{ shift.start_time | date:'short' }}</td>
+                                <td class="px-4 py-3">{{ shift.end_time | date:'short' }}</td>
+                                <td class="px-4 py-3">
+                                    <span *ngIf="shift.status === 'active'" class="badge badge-success">Activo</span>
+                                    <span *ngIf="shift.status === 'completed'" class="badge badge-secondary">Completado</span>
+                                    <span *ngIf="shift.status === 'cancelled'" class="badge badge-danger">Cancelado</span>
+                                </td>
+                                <td class="px-4 py-3">
+                                    <button class="btn btn-warning btn-sm mr-2" [routerLink]="['/shifts/view', shift.id]">Info</button>
+                                    <button class="btn btn-warning btn-sm mr-2" [routerLink]="['/shifts/update', shift.id]">Editar</button>
+                                    <button class="btn btn-danger btn-sm" (click)="deleteShift(shift.id)">Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

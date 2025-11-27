@@ -53,6 +53,34 @@ export const AdminLayoutRoutes: Routes = [
                 (m) => m.AddressModule
             ),
         },
+        {
+            path: "motorcycles",
+            loadChildren: () =>
+            import("src/app/pages/motorcycle/motorcycle.module").then(
+                (m) => m.MotorcycleModule
+            ),
+        },
+        {
+            path: "drivers",
+            loadChildren: () =>
+            import("src/app/pages/driver/driver.module").then(
+                (m) => m.DriverModule
+            ),
+        },
+        {
+            path: "shifts",
+            loadChildren: () =>
+            import("src/app/pages/shift/shift.module").then(
+                (m) => m.ShiftModule
+            ),
+        },
+        {
+            path: "issues",
+            loadChildren: () =>
+            import("src/app/pages/issue/issue.module").then(
+                (m) => m.IssueModule
+            ),
+        },
         ],
     },
 ];
