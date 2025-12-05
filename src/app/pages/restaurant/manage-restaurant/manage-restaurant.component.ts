@@ -42,12 +42,45 @@ export class ManageRestaurantComponent implements OnInit {
 
   configFormGroup() {                                 
     this.theFormGroup = this.theFormBuilder.group({
-      id: [0,[]],
-      name: ['', [Validators.required, Validators.min(3), Validators.max(100)]], 
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
-      address: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]]
-    })
+      id: [0, []],
+
+      name: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(100)
+        ]
+      ],
+
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.email,
+          Validators.maxLength(150)
+        ]
+      ],
+
+      phone: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(/^[0-9+\-()\s]+$/), // Solo números y símbolos comunes
+          Validators.minLength(6),
+          Validators.maxLength(20)
+        ]
+      ],
+
+      address: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(200)
+        ]
+      ]
+    });
   }
 
   get getTheFormGroup() {              

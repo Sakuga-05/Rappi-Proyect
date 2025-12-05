@@ -29,8 +29,8 @@
                                 <td class="px-4 py-3">{{ getRestaurantName(menu.restaurant_id) }}</td>
                                 <td class="px-4 py-3">${{ menu.price }}</td>
                                 <td class="px-4 py-3">
-                                    <span *ngIf="menu.available" class="badge badge-success">Sí</span>
-                                    <span *ngIf="!menu.available" class="badge badge-danger">No</span>
+                                    <span *ngIf="menu.availability" class="badge badge-success">Sí</span>
+                                    <span *ngIf="!menu.availability" class="badge badge-danger">No</span>
                                 </td>
                                 <td class="px-4 py-3" *ngIf="!selectedRestaurantId">
                                     <button class="btn btn-warning btn-sm mr-2" [routerLink]="['/menus/update', menu.id]">Editar</button>

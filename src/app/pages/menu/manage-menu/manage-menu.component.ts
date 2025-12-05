@@ -38,7 +38,7 @@ export class ManageMenuComponent implements OnInit {
       product_id: [0, [Validators.required]],
       restaurant_id: [0, [Validators.required]],
       price: [0, [Validators.required, Validators.min(0)]],
-      available: [true, []]
+      availability: [true, []]
     });
   }
 
