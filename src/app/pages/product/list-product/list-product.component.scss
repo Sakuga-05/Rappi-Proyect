@@ -1,0 +1,142 @@
+/* ===== BACKGROUND GLOBAL ===== */
+body, html {
+  font-family: 'Poppins', sans-serif;
+  color: #e8f6ff;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-image: url('../../../../assets/img/fondo.png');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+/* ===== HEADER DASHBOARD ===== */
+.header-dashboard {
+  background: linear-gradient(135deg, #0e2a44, #123a57, #155377);
+  padding: 60px 0 40px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 2px solid rgba(120,200,255,0.3);
+}
+
+.header-dashboard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 30%, rgba(120,220,255,0.15), transparent 60%);
+  filter: blur(60px);
+  opacity: 0.5;
+}
+
+.title-dashboard {
+  font-size: 38px;
+  font-weight: 800;
+  color: #e8f6ff;
+  margin-bottom: 8px;
+  text-shadow: 0 0 12px rgba(0,80,120,0.4);
+}
+
+.subtitle-dashboard {
+  font-size: 18px;
+  font-weight: 500;
+  color: #d0f0ff;
+  opacity: 0.85;
+}
+
+/* ===== CARD ICE ===== */
+.card-ice {
+  background: linear-gradient(145deg, #0e2a44, #123a57);
+  border: 2px solid rgba(120,200,255,0.35);
+  border-radius: 18px;
+  padding: 24px;
+  color: #e8f6ff;
+  box-shadow:
+    0 8px 18px rgba(0,100,150,0.35),
+    inset 0 0 14px rgba(255,255,255,0.07);
+  backdrop-filter: blur(6px);
+  margin-bottom: 30px;
+}
+
+/* ===== TABLA ICE ===== */
+.table-ice {
+  width: 100%;
+  color: #e8f6ff;
+  border-collapse: collapse;
+}
+
+.table-ice th {
+  background: #155377;
+  color: #e8f6ff;
+  font-weight: 600;
+  padding: 12px;
+  text-align: center;
+}
+
+.table-ice td {
+  padding: 12px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table-ice tr:nth-child(even) {
+  background: rgba(255,255,255,0.05);
+}
+
+.table-ice tr:hover {
+  background: rgba(120,200,255,0.15);
+  transition: 0.25s;
+}
+
+/* ===== BOTONES ICE ===== */
+.btn-ice {
+  background: linear-gradient(135deg, #0079b7, #4bcfff);
+  border: 2px solid #b4e7ff;
+  border-radius: 12px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-ice:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,230,255,0.4), 0 0 15px rgba(255,255,255,0.65);
+  background: linear-gradient(135deg, #00e4ff, #0099cc);
+}
+
+.btn-ice-warning {
+  background: linear-gradient(135deg, #ffc107, #ffdd57);
+  border: 2px solid #ffe28a;
+  color: #0e2a44;
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-weight: 600;
+}
+
+.btn-ice-warning:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255,200,50,0.4);
+}
+
+.btn-ice-danger {
+  background: linear-gradient(135deg, #ff5c5c, #ff8787);
+  border: 2px solid #ff9999;
+  color: #0e2a44;
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-weight: 600;
+}
+
+.btn-ice-danger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255,100,100,0.4);
+}
+
+/* ===== RESPONSIVE TABLE ===== */
+.table-responsive {
+  overflow-x: auto;
+}

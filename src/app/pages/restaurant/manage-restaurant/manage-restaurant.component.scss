@@ -1,2 +1,110 @@
-.card { padding: 1rem; }
-.form-group { margin-bottom: 1rem; }
+/* ===== GLOBAL ===== */
+body, html {
+  font-family: 'Poppins', sans-serif;
+  background-image: url('../../../../assets/img/fondo.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #e8f6ff;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== HEADER DASHBOARD ===== */
+.header-dashboard {
+  background: linear-gradient(135deg, #0e2a44, #123a57, #155377);
+  padding: 60px 0 40px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 2px solid rgba(120,200,255,0.3);
+}
+
+.header-dashboard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 30%, rgba(120,220,255,0.15), transparent 60%);
+  filter: blur(60px);
+  opacity: 0.5;
+}
+
+.title-dashboard {
+  font-size: 34px;
+  font-weight: 800;
+  color: #e8f6ff;
+  margin-bottom: 6px;
+  text-shadow: 0 0 12px rgba(0,80,120,0.4);
+}
+
+.subtitle-dashboard {
+  font-size: 16px;
+  font-weight: 500;
+  color: #d0f0ff;
+  opacity: 0.85;
+}
+
+/* ===== CARD ICE ===== */
+.card-ice {
+  background: linear-gradient(145deg, #0e2a44, #123a57);
+  border: 2px solid rgba(120,200,255,0.35);
+  border-radius: 18px;
+  padding: 24px;
+  color: #e8f6ff;
+  box-shadow: 0 8px 18px rgba(0,100,150,0.35), inset 0 0 14px rgba(255,255,255,0.07);
+  backdrop-filter: blur(6px);
+  margin-bottom: 30px;
+}
+
+/* ===== INPUTS ICE ===== */
+.input-ice {
+  background: rgba(255,255,255,0.05);
+  border: 2px solid rgba(120,200,255,0.3);
+  border-radius: 12px;
+  color: #e8f6ff;
+  padding: 10px 12px;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.input-ice:focus {
+  border-color: #4bcfff;
+  box-shadow: 0 0 10px rgba(75,207,255,0.5);
+  outline: none;
+}
+
+/* ===== ERROR MESSAGE ===== */
+.msnError {
+  color: #ff6b6b;
+  font-size: 13px;
+  display: block;
+  margin-top: 4px;
+}
+
+/* ===== BUTTONS ICE ===== */
+.btn-ice-block {
+  background: linear-gradient(135deg, #0079b7, #4bcfff);
+  border: 2px solid #b4e7ff;
+  color: #0e2a44;
+  border-radius: 12px;
+  padding: 10px 18px;
+  font-weight: 700;
+  cursor: pointer;
+  flex: 1;
+  transition: 0.3s ease;
+}
+
+.btn-ice-block:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(120,220,255,0.4);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+  }
+  .form-group {
+    margin-top: 12px;
+  }
+}
