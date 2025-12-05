@@ -83,6 +83,13 @@ export const AdminLayoutRoutes: Routes = [
                 (m) => m.IssueModule
             ),
         },
+        {
+            path: "chatbot",
+            loadChildren: () =>
+            import("src/app/pages/chatbot/chatbot.module").then(
+                (m) => m.ChatbotModule
+            ),
+        },
         ],
     },
 ];
