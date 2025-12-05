@@ -1,0 +1,28 @@
+<div class="header bg-gradient-danger pb-0 pt-3"></div>
+<div class="container-fluid mt--5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header bg-transparent">
+          <h4 class="mb-0">Asistente Inteligente</h4>
+        </div>
+        <div class="card-body chat-body">
+          <div class="chat-area" #scrollArea>
+            <div *ngFor="let m of messages" class="message" [ngClass]="{'from-user': m.from === 'user', 'from-bot': m.from === 'bot'}">
+              <div class="bubble">{{ m.text }}</div>
+            </div>
+            <div *ngIf="loading" class="message from-bot">
+              <div class="bubble">...</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <form (ngSubmit)="send()" class="d-flex">
+            <input class="form-control mr-2" [(ngModel)]="inputText" name="inputText" placeholder="Escribe tu pregunta..." autocomplete="off" />
+            <button class="btn btn-primary" type="submit">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
