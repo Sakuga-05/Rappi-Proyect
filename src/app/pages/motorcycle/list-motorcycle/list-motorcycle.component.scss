@@ -1,0 +1,141 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: 'Poppins', sans-serif;
+  color: #d9efff;
+  background: radial-gradient(circle at bottom, #0d2740, #0a1b2e, #03101e);
+  min-height: 100vh;
+}
+
+/* NIEBLA POLAR */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.07), transparent 70%);
+  pointer-events: none;
+  animation: winterFog 22s linear infinite;
+}
+
+@keyframes winterFog {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(20px) translateX(-10px); }
+  100% { transform: translateY(0); }
+}
+
+/* HEADER */
+.header {
+  height: 120px;
+  background: linear-gradient(135deg, #123a57, #165072, #1a6a94);
+  border-bottom: 1px solid rgba(180,220,255,0.4);
+  box-shadow: 0 6px 18px rgba(0, 60, 100, 0.35);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  color: #e8f6ff;
+  font-size: 24px;
+}
+
+/* CONTENEDOR FONDO */
+.container-fluid {
+  background-image: url('../../../../assets/img/fondo.png');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  padding-top: 40px;
+  padding-bottom: 60px;
+}
+
+/* CARD ICE */
+.card-ice {
+  background: linear-gradient(145deg, #0e2a44, #123a57);
+  border: 2px solid rgba(120,200,255,0.4);
+  border-radius: 22px;
+  padding: 24px;
+  color: #e8f6ff;
+  box-shadow:
+    0 8px 18px rgba(0, 100, 150, 0.35),
+    inset 0 0 14px rgba(255,255,255,0.07);
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+
+/* TABLA ICE */
+.table-ice {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  color: #e8f6ff;
+}
+
+.table-ice thead tr {
+  background: linear-gradient(135deg, #0a2a44, #0e3a57);
+  color: #e8f6ff;
+}
+
+.table-ice th, .table-ice td {
+  padding: 12px 16px;
+  border: 1px solid rgba(75,207,255,0.2);
+}
+
+.table-ice tbody tr:hover {
+  background: rgba(75,207,255,0.1);
+}
+
+/* BADGES ICE */
+.badge {
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.badge-ice-success { background: #4bcfff; color: #0d2740; }
+.badge-ice-primary { background: #0079b7; color: #e8f6ff; }
+.badge-ice-warning { background: #ffb74d; color: #0d2740; }
+
+/* BOTONES ICE */
+.btn-ice {
+  background: linear-gradient(135deg, #0079b7, #4bcfff);
+  border: 2px solid #b4e7ff;
+  border-radius: 14px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 6px 12px;
+  box-shadow: 0 4px 14px rgba(0, 190, 255, 0.3);
+  transition: all .3s ease;
+  cursor: pointer;
+  color: #e8f6ff;
+  font-size: 0.85rem;
+}
+
+.btn-ice:hover {
+  background: linear-gradient(135deg, #00e4ff, #0099cc);
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 18px rgba(0,230,255,0.4),
+    0 0 12px rgba(255,255,255,0.65);
+  animation: pulseIce 0.7s ease;
+}
+
+.btn-ice-warning { background: #ffb74d; color: #0d2740; }
+.btn-ice-warning:hover { filter: brightness(1.2); }
+
+.btn-ice-danger { background: #ff6b6b; color: #fff; }
+.btn-ice-danger:hover { filter: brightness(1.2); }
+
+@keyframes pulseIce {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(1.4); }
+  100% { filter: brightness(1); }
+}

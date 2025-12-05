@@ -33,6 +33,7 @@ body {
   font-weight: 800;
   color: #e8f6ff;
   text-shadow: 0 0 12px rgba(120,200,255,0.4);
+  text-align: center;
 }
 
 /* ===== BACKGROUND IMAGE ===== */
@@ -41,19 +42,29 @@ body {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  padding: 50px 20px;
 }
 
 /* ===== WRAPPER ===== */
 .users-wrapper {
-  padding: 50px;
   display: flex;
   justify-content: center;
   gap: 50px;
+  flex-wrap: wrap; /* permite que las cards bajen en pantallas pequeñas */
+}
+
+/* ===== CARD WRAPPER ===== */
+.ice-card-wrapper {
+  flex: 1 1 260px; /* crece, encoge, base mínimo 260px */
+  max-width: 320px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
 /* ===== CARD ===== */
 .ice-card {
-  width: 260px;
+  width: 100%;
   background: rgba(14, 43, 69, 0.8);
   border: 2px solid rgba(120,200,255,0.35);
   border-radius: 18px;
@@ -89,25 +100,27 @@ body {
   border-radius: 50%;
   margin: 0 auto 20px auto;
 
-  background: linear-gradient(135deg, #c42d2d, #ff5454, #ff8787);
-
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 36px;
-  color: white;
-
-  box-shadow:
-    0 0 12px rgba(255,80,80,0.6),
-    inset 0 0 12px rgba(255,200,200,0.5);
-
   transition: 0.3s ease;
 }
 
-.icon-circle:hover {
+.icon-circle-yeti {
+  background-image: url('../../../assets/img/yeti.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  box-shadow:
+    0 0 12px rgba(75,207,255,0.6),
+    inset 0 0 12px rgba(255,255,255,0.35);
+}
+
+.icon-circle-yeti:hover {
   transform: scale(1.12);
   box-shadow:
-    0 0 18px rgba(255,120,120,0.9),
+    0 0 18px rgba(120,220,255,0.9),
     inset 0 0 18px rgba(255,240,240,0.6);
 }
 
@@ -134,8 +147,36 @@ body {
     0 0 8px rgba(255,200,200,0.7);
 }
 
-/* ===== CENTER BLOCKS ===== */
-.center-viewport {
-  display: flex;
-  justify-content: center;
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+  .users-wrapper {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .users-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .ice-card-wrapper {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 28px;
+  }
+  .ice-card {
+    padding: 20px 12px;
+  }
+  .ice-btn-lg {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+  .icon-circle {
+    width: 70px;
+    height: 70px;
+  }
 }

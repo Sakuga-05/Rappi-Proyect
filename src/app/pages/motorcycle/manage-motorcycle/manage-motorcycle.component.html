@@ -1,63 +1,68 @@
-<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8"></div>
-<div class="container-fluid mt--7">
-    <div class="row">
-        <div class="col-lg-8 mx-auto">
-            <div class="card shadow">
-                <div class="card-header bg-transparent">
-                    <h3 class="mb-0">{{ isView ? 'Ver' : (id ? 'Editar' : 'Crear') }} Motocicleta</h3>
-                </div>
-                <div class="card-body">
-                    <form [formGroup]="form" (ngSubmit)="save()">
-                        <div class="form-group">
-                            <label for="license_plate">Placa</label>
-                            <input type="text" class="form-control" id="license_plate" formControlName="license_plate" 
-                                   [class.is-invalid]="form.get('license_plate')?.invalid && form.get('license_plate')?.touched">
-                            <div class="invalid-feedback" *ngIf="form.get('license_plate')?.errors?.['required']">
-                                La placa es requerida
-                            </div>
-                        </div>
+<div class="header">
+  <h1>{{ isView ? 'Ver' : (id ? 'Editar' : 'Crear') }} Motocicleta</h1>
+</div>
 
-                        <div class="form-group">
-                            <label for="brand">Marca</label>
-                            <input type="text" class="form-control" id="brand" formControlName="brand"
-                                   [class.is-invalid]="form.get('brand')?.invalid && form.get('brand')?.touched">
-                            <div class="invalid-feedback" *ngIf="form.get('brand')?.errors?.['required']">
-                                La marca es requerida
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="year">Año</label>
-                            <input type="number" class="form-control" id="year" formControlName="year"
-                                   [class.is-invalid]="form.get('year')?.invalid && form.get('year')?.touched">
-                            <div class="invalid-feedback" *ngIf="form.get('year')?.errors?.['required']">
-                                El año es requerido
-                            </div>
-                            <div class="invalid-feedback" *ngIf="form.get('year')?.errors?.['min']">
-                                El año debe ser mayor a 1900
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="status">Estado</label>
-                            <select class="form-control" id="status" formControlName="status"
-                                    [class.is-invalid]="form.get('status')?.invalid && form.get('status')?.touched">
-                                <option value="available">Disponible</option>
-                                <option value="in_use">En Uso</option>
-                                <option value="maintenance">Mantenimiento</option>
-                            </select>
-                            <div class="invalid-feedback" *ngIf="form.get('status')?.errors?.['required']">
-                                El estado es requerido
-                            </div>
-                        </div>
-
-                        <div class="d-flex justify-content-between">
-                            <button type="button" class="btn btn-secondary" [routerLink]="['/motorcycles/list']">Volver</button>
-                            <button type="submit" class="btn btn-success" *ngIf="!isView">Guardar</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+<div class="container-fluid mt--3">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <div class="card card-ice shadow">
+        <div class="card-header bg-transparent">
+          <h3 class="mb-0">{{ isView ? 'Ver' : (id ? 'Editar' : 'Crear') }} Motocicleta</h3>
         </div>
+        <div class="card-body">
+          <form [formGroup]="form" (ngSubmit)="save()">
+            
+            <div class="form-group">
+              <label for="license_plate">Placa</label>
+              <input type="text" class="form-control form-control-ice" id="license_plate" formControlName="license_plate"
+                     [class.is-invalid]="form.get('license_plate')?.invalid && form.get('license_plate')?.touched">
+              <div class="invalid-feedback" *ngIf="form.get('license_plate')?.errors?.['required']">
+                La placa es requerida
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="brand">Marca</label>
+              <input type="text" class="form-control form-control-ice" id="brand" formControlName="brand"
+                     [class.is-invalid]="form.get('brand')?.invalid && form.get('brand')?.touched">
+              <div class="invalid-feedback" *ngIf="form.get('brand')?.errors?.['required']">
+                La marca es requerida
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="year">Año</label>
+              <input type="number" class="form-control form-control-ice" id="year" formControlName="year"
+                     [class.is-invalid]="form.get('year')?.invalid && form.get('year')?.touched">
+              <div class="invalid-feedback" *ngIf="form.get('year')?.errors?.['required']">
+                El año es requerido
+              </div>
+              <div class="invalid-feedback" *ngIf="form.get('year')?.errors?.['min']">
+                El año debe ser mayor a 1900
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="status">Estado</label>
+              <select class="form-control form-control-ice" id="status" formControlName="status"
+                      [class.is-invalid]="form.get('status')?.invalid && form.get('status')?.touched">
+                <option value="available">Disponible</option>
+                <option value="in_use">En Uso</option>
+                <option value="maintenance">Mantenimiento</option>
+              </select>
+              <div class="invalid-feedback" *ngIf="form.get('status')?.errors?.['required']">
+                El estado es requerido
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+              <button type="button" class="btn btn-ice-secondary" [routerLink]="['/motorcycles/list']">Volver</button>
+              <button type="submit" class="btn btn-ice" *ngIf="!isView">Guardar</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
