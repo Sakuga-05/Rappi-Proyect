@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { RestaurantComponent } from 'src/app/pages/restaurant/restaurant.component';
+import { MotorcycleComponent } from 'src/app/pages/motorcycle/motorcycle.component';
 import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
 import { GraficasComponent } from 'src/app/pages/graficas/graficas.component';
 
@@ -8,6 +9,7 @@ import { GraficasComponent } from 'src/app/pages/graficas/graficas.component';
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'restaurante',      component: RestaurantComponent },
+    { path: 'motocicleta',      component: MotorcycleComponent },
     { path: 'graficas',      component: GraficasComponent },
     {
         path: "",
