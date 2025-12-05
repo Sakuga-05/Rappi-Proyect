@@ -52,16 +52,23 @@ export class MenuClientComponent implements OnInit {
     this.service.getAll().subscribe(data => {
       this.menus = data;
       this.applyFilter();
-      // Inicializar cantidades
+      // Inicializar cantidades (solo para menús cargados)
       this.menus.forEach(m => this.quantities[m.id] = 1);
     });
   }
 
   applyFilter() {
+    const isAvailable = (m: Menu) => {
+      // Compatibilidad: algunos backends usan `availability`, otros `available`
+      const anyM = m as any;
+      if (anyM.hasOwnProperty('availability')) return !!anyM.availability;
+      return true; // por defecto mostrar si no hay campo
+    };
+
     if (this.selectedRestaurantId) {
-      this.filteredMenus = this.menus.filter(m => m.restaurant_id === this.selectedRestaurantId);
+      this.filteredMenus = this.menus.filter(m => m.restaurant_id === this.selectedRestaurantId && isAvailable(m));
     } else {
-      this.filteredMenus = this.menus;
+      this.filteredMenus = this.menus.filter(m => isAvailable(m));
     }
   }
 
