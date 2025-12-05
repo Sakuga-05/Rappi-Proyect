@@ -16,21 +16,22 @@
         <!-- INPUT -->
         <div class="ice-input-group">
           <label>Nombre</label>
-          <input formControlName="name" class="ice-input" />
+          <input formControlName="name" class="ice-input" [disabled]="isView" />
         </div>
 
         <div class="ice-input-group">
           <label>Email</label>
-          <input formControlName="email" class="ice-input" />
+          <input formControlName="email" class="ice-input" [disabled]="isView" />
         </div>
 
         <div class="ice-input-group">
           <label>Teléfono</label>
-          <input formControlName="phone" class="ice-input" />
+          <input formControlName="phone" class="ice-input" [disabled]="isView" />
         </div>
 
         <div class="form-actions">
-          <button class="ice-btn-lg" type="submit">💾 Guardar</button>
+          <button class="ice-btn-lg" type="submit" *ngIf="!isView"> Guardar</button>
+          <button class="ice-btn-lg" type="button" *ngIf="isView" [routerLink]="['/users/list']">Volver</button>
         </div>
 
       </form>

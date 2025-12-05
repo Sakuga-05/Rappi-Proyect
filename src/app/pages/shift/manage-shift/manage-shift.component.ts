@@ -29,6 +29,10 @@ export class ManageShiftComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
+    this.configFormGroup();
+  }
+
+  configFormGroup() {
     this.form = this.fb.group({
       driver_id: ['', Validators.required],
       motorcycle_id: ['', Validators.required],

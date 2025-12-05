@@ -36,7 +36,8 @@
               <textarea formControlName="additional_info" class="form-control" rows="3"></textarea>
             </div>
             <div class="text-right">
-              <button class="btn btn-primary" type="submit">Guardar</button>
+              <button class="btn btn-primary" type="submit" *ngIf="!isView">Guardar</button>
+              <button class="btn btn-secondary" type="button" *ngIf="isView" [routerLink]="['/addresses/list']">Volver</button>
             </div>
           </form>
         </div>

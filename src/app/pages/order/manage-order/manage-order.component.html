@@ -10,14 +10,14 @@
           <form [formGroup]="form" (ngSubmit)="save()">
             <div class="form-group">
               <label>Cliente</label>
-              <select formControlName="customer_id" class="form-control">
+              <select formControlName="customer_id" class="form-control" [disabled]="isView">
                 <option value="">Seleccionar cliente</option>
                 <option *ngFor="let c of customers" [value]="c.id">{{ c.name }}</option>
               </select>
             </div>
             <div class="form-group">
               <label>Motocicleta</label>
-              <select formControlName="motorcycle_id" class="form-control">
+              <select formControlName="motorcycle_id" class="form-control" [disabled]="isView">
                 <option value="">Seleccionar motocicleta</option>
                 <option *ngFor="let m of motorcycles" [value]="m.id">{{ m.license_plate }}</option>
               </select>
@@ -28,11 +28,11 @@
             </div>
             <div class="form-group">
               <label>Cantidad</label>
-              <input formControlName="quantity" class="form-control" type="number" min="1" />
+              <input formControlName="quantity" class="form-control" type="number" min="1" [disabled]="isView" />
             </div>
             <div class="form-group">
               <label>Estado</label>
-              <select formControlName="status" class="form-control">
+              <select formControlName="status" class="form-control" [disabled]="isView">
                 <option value="pending">Pendiente</option>
                 <option value="preparing">Preparando</option>
                 <option value="ready">Listo</option>
@@ -40,7 +40,8 @@
               </select>
             </div>
             <div class="text-right">
-              <button class="btn btn-primary" type="submit">Guardar</button>
+              <button class="btn btn-primary" type="submit" *ngIf="!isView">Guardar</button>
+              <button class="btn btn-secondary" type="button" *ngIf="isView" [routerLink]="['/orders/list']">Volver</button>
             </div>
           </form>
         </div>

@@ -21,6 +21,7 @@ export class ManageOrderComponent implements OnInit {
   customers: Customer[] = [];
   motorcycles: Motorcycle[] = [];
   selectedMenu?: Menu;
+  isView: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -30,11 +31,15 @@ export class ManageOrderComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
+    this.configFormGroup();
+  }
+
+  configFormGroup() {
     this.form = this.fb.group({
       customer_id: ['', Validators.required],
       motorcycle_id: ['', Validators.required],
       quantity: [1, [Validators.required, Validators.min(1)]],
-      status: ['pending']
+      status: ['pending', Validators.required]
     });
   }
 
@@ -51,7 +56,11 @@ export class ManageOrderComponent implements OnInit {
     this.route.params.subscribe(params => {
       if (params['id']) {
         this.id = +params['id'];
-        this.service.getById(this.id).subscribe(o => this.form.patchValue(o));
+        this.isView = this.router.url.includes('/view/');
+        this.service.getById(this.id).subscribe(o => {
+          this.form.patchValue(o);
+          if (this.isView) this.form.disable();
+        });
       }
     });
   }

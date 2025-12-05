@@ -21,10 +21,14 @@ export class ManageDriverComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
+    this.configFormGroup();
+  }
+
+  configFormGroup() {
     this.form = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.minLength(6)]],
       license_number: ['', Validators.required],
       status: ['available', Validators.required]
     });
