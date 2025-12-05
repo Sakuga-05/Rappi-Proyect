@@ -10,7 +10,7 @@
           <form [formGroup]="form" (ngSubmit)="save()">
             <div class="form-group">
               <label>Pedido</label>
-              <select formControlName="order_id" class="form-control">
+              <select formControlName="order_id" class="form-control" [disabled]="orderIdLocked">
                 <option value="">Seleccionar pedido</option>
                 <option *ngFor="let o of orders" [value]="o.id">Pedido #{{o.id}}</option>
               </select>
@@ -24,12 +24,16 @@
               <input formControlName="city" class="form-control" />
             </div>
             <div class="form-group">
-              <label>País</label>
-              <input formControlName="country" class="form-control" />
+              <label>Estado/Departamento</label>
+              <input formControlName="state" class="form-control" />
             </div>
             <div class="form-group">
               <label>Código Postal</label>
               <input formControlName="postal_code" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label>Información Adicional</label>
+              <textarea formControlName="additional_info" class="form-control" rows="3"></textarea>
             </div>
             <div class="text-right">
               <button class="btn btn-primary" type="submit">Guardar</button>

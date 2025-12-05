@@ -16,6 +16,7 @@ export class ManageAddressComponent implements OnInit {
   form: FormGroup;
   id?: number;
   orders: Order[] = [];
+  orderIdLocked: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -27,9 +28,10 @@ export class ManageAddressComponent implements OnInit {
     this.form = this.fb.group({
       order_id: ['', Validators.required],
       street: ['', Validators.required],
-      city: [''],
-      country: [''],
-      postal_code: ['']
+      city: ['', Validators.required],
+      state: ['', Validators.required],
+      postal_code: ['', Validators.required],
+      additional_info: ['']
     });
   }
 
@@ -40,17 +42,25 @@ export class ManageAddressComponent implements OnInit {
         this.id = +params['id'];
         this.service.getById(this.id).subscribe(a => this.form.patchValue(a));
       }
-    })
+    });
+    // Capturar el order_id desde queryParams si viene del formulario de crear
+    this.route.queryParams.subscribe(queryParams => {
+      if (queryParams['order_id']) {
+        this.form.patchValue({ order_id: +queryParams['order_id'] });
+        this.orderIdLocked = true;
+        this.form.get('order_id')?.disable();
+      }
+    });
   }
 
   save() {
     if (this.form.invalid) { this.form.markAllAsTouched(); return; }
-    const address: Address = { ...(this.form.value as Address) } as Address;
+    const address: Address = { ...(this.form.getRawValue() as Address) } as Address;
     if (this.id) {
       address.id = this.id;
       this.service.update(address).subscribe(() => { Swal.fire('Actualizado','OK','success'); this.router.navigate(['/addresses/list']); });
     } else {
-      this.service.create(address).subscribe(() => { Swal.fire('Creado','OK','success'); this.router.navigate(['/addresses/list']); });
+      this.service.create(address).subscribe(() => { Swal.fire('Creado','OK','success'); this.router.navigate(['/orders/list']); });
     }
   }
 }

@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { Menu } from 'src/app/models/menu.model';
-import { CartService } from 'src/app/services/cart.service';
 import { MenuService } from 'src/app/services/menu.service';
 import { ProductService } from 'src/app/services/product.service';
 import { RestaurantService } from 'src/app/services/restaurant.service';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-menu-client',
@@ -25,8 +23,8 @@ export class MenuClientComponent implements OnInit {
     private service: MenuService,
     private productService: ProductService,
     private restaurantService: RestaurantService,
-    private cartService: CartService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -79,26 +77,11 @@ export class MenuClientComponent implements OnInit {
   getRestaurantName(id: number) {
     return this.restaurantMap[id] ?? `#${id}`;
   }
-
-  addToCart(menu: Menu) {
-    const quantity = this.quantities[menu.id] || 1;
-    
-    if (quantity <= 0) {
-      Swal.fire('Error', 'La cantidad debe ser mayor a 0', 'error');
-      return;
-    }
-
-    this.cartService.addItem({
-      menuId: menu.id,
-      productId: menu.product_id,
-      productName: this.getProductName(menu.product_id),
-      restaurantId: menu.restaurant_id,
-      restaurantName: this.getRestaurantName(menu.restaurant_id),
-      price: menu.price,
-      quantity: quantity
+  
+  goToCreateOrder(menu: Menu) {
+    console.log('Navigating to create order with menu:', menu);
+    this.router.navigate(['/orders/create'], { 
+      state: { selectedMenu: menu },
     });
-
-    Swal.fire('¡Agregado!', `${this.getProductName(menu.product_id)} agregado al carrito`, 'success');
-    this.quantities[menu.id] = 1; // Reiniciar cantidad
   }
 }

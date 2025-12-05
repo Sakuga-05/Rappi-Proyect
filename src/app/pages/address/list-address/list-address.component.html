@@ -6,7 +6,7 @@
                 <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
                     <h3 class="mb-0">Direcciones</h3>
                     <div>
-                        <button class="btn btn-info btn-md mr-2" [routerLink]="['/addresses/create']">Crear</button>
+                        <button class="btn btn-info btn-md mr-2" [routerLink]="['/orders/list']">Volver</button>
                     </div>
                 </div>
                 <div class="card-body">
@@ -15,7 +15,6 @@
                             <tr>
                                 <th class="px-4 py-3">Calle</th>
                                 <th class="px-4 py-3">Ciudad</th>
-                                <th class="px-4 py-3">País</th>
                                 <th class="px-4 py-3">Código Postal</th>
                                 <th class="px-4 py-3">Pedido</th>
                                 <th class="px-4 py-3">Opciones</th>
@@ -25,7 +24,6 @@
                             <tr *ngFor="let address of addresses">
                                 <td class="px-4 py-3">{{address.street}}</td>
                                 <td class="px-4 py-3">{{address.city}}</td>
-                                <td class="px-4 py-3">{{address.country}}</td>
                                 <td class="px-4 py-3">{{address.postal_code}}</td>
                                 <td class="px-4 py-3">{{ getOrderLabel(address.order_id) }}</td>
                                 <td class="px-4 py-3">
