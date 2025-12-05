@@ -149,7 +149,7 @@ export class CartComponent implements OnInit {
   }
 
   continueShopping(): void {
-    this.router.navigate(['/orders/menu']);
+    this.router.navigate(['/restaurants/view-menu']);
   }
 
   clear(): void {

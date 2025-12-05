@@ -7,9 +7,6 @@
             <div class="card shadow">
                 <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
                     <h3 class="mb-0">Menús {{ selectedRestaurantId ? 'del Restaurante ' + getRestaurantName(selectedRestaurantId) : '' }}</h3>
-                    <div>
-                        <a href="#/cart" class="btn btn-success btn-md">Ver Carrito</a>
-                    </div>
                 </div>
                 <div class="card-body">
                     <table class="table table-striped table-hover table-bordered align-middle">
@@ -40,7 +37,7 @@
                                 <td class="px-4 py-3">
                                     <button class="btn btn-info btn-sm" 
                                             (click)="addToCart(menu)"
-                                            [disabled]="!menu.available">
+                                            [disabled]="!menu.availability">
                                         Agregar al Carrito
                                     </button>
                                 </td>
