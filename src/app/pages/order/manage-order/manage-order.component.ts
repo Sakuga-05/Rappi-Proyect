@@ -3,8 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from 'src/app/models/customer.model';
 import { Order } from 'src/app/models/order.model';
+import { Motorcycle } from 'src/app/models/motorcycle.model';
 import { CustomerService } from 'src/app/services/customer.service';
 import { OrderService } from 'src/app/services/order.service';
+import { MotorcycleService } from 'src/app/services/motorcycle.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -16,16 +18,19 @@ export class ManageOrderComponent implements OnInit {
   form: FormGroup;
   id?: number;
   customers: Customer[] = [];
+  motorcycles: Motorcycle[] = [];
 
   constructor(
     private fb: FormBuilder,
     private service: OrderService,
     private customerService: CustomerService,
+    private motorcycleService: MotorcycleService,
     private router: Router,
     private route: ActivatedRoute
   ) {
     this.form = this.fb.group({
       customer_id: ['', Validators.required],
+      motorcycle_id: ['', Validators.required],
       total: ['', Validators.required],
       status: ['pending']
     });
@@ -33,6 +38,8 @@ export class ManageOrderComponent implements OnInit {
 
   ngOnInit(): void {
     this.customerService.getAll().subscribe(data => this.customers = data);
+    this.motorcycleService.getAll().subscribe(data => this.motorcycles = data);
+    console.log(this.motorcycles)
     this.route.params.subscribe(params => {
       if (params['id']) {
         this.id = +params['id'];

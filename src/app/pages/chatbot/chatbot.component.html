@@ -19,7 +19,7 @@
                    [ngClass]="{'from-user': m.from === 'user', 'from-bot': m.from === 'bot'}">
 
                 <!-- Avatar solo para el bot -->
-                <img *ngIf="m.from === 'bot'" src="assets/img/yeti.png" class="avatar">
+                <img *ngIf="m.from === 'bot'" src="../../../assets/img/avatar.png" class="avatar">
 
                 <div class="bubble">{{ m.text }}</div>
               </div>

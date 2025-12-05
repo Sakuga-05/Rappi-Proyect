@@ -16,6 +16,13 @@
               </select>
             </div>
             <div class="form-group">
+              <label>Motocicleta</label>
+              <select formControlName="motorcycle_id" class="form-control">
+                <option value="">Seleccionar motocicleta</option>
+                <option *ngFor="let m of motorcycles" [value]="m.id">{{ m.license_plate }}</option>
+              </select>
+            </div>
+            <div class="form-group">
               <label>Total</label>
               <input formControlName="total" class="form-control" type="number" step="0.01" />
             </div>
