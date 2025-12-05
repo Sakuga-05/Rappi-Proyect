@@ -5,14 +5,14 @@
 export const environment = {
   production: false,
   url_backend: "http://127.0.0.1:5000",
-  firebaseConfig: {
-    apiKey: "AIzaSyB6gE0qp-HzsONoMiLLBi3MsipxUytDpXo",
-    authDomain: "angular-delivery-6ddae.firebaseapp.com",
-    projectId: "angular-delivery-6ddae",
-    storageBucket: "angular-delivery-6ddae.firebasestorage.app",
-    messagingSenderId: "741548381752",
-    appId: "1:741548381752:web:4870af438b82b6f528f8cd"
-  },
+  firebaseConfig : {
+  apiKey: "AIzaSyAqwToQFDAQGDY_HMO1MIBpHl5YDHHYfTk",
+  authDomain: "proyect-security.firebaseapp.com",
+  projectId: "proyect-security",
+  storageBucket: "proyect-security.firebasestorage.app",
+  messagingSenderId: "29089216541",
+  appId: "1:29089216541:web:81ec16958a86712b2e2ef4"
+},
   url_graficas: "https://7e7398ce-1119-4893-bb8b-fe248a1aeec4.mock.pstmn.io"
 };
 

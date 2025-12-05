@@ -1,7 +1,67 @@
-<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+<div class="header-dashboard pb-4 pt-5 pt-md-8">
   <div class="container-fluid">
-    <div class="header-body">
-      HOLA QUE HACE :)
+    <div class="header-content">
+      <h1 class="title-dashboard">Bienvenido a FoodDash!</h1>
+      <p class="subtitle-dashboard">Gestiona tu tienda, restaurantes, menús y pedidos desde un solo lugar</p>
     </div>
   </div>
+</div>
+
+<div class="container-fluid mt--4 dashboard-wrapper">
+
+  <!-- TARJETAS PRINCIPALES -->
+  <div class="cards-grid">
+    <!-- Productos -->
+    <div class="dash-card">
+      <div class="dash-icon" style="background-image: url('../../../assets/img/yeti.webp');"></div>
+      <h3>Productos</h3>
+      <p>Gestiona todos los productos de tu tienda</p>
+      <button class="dash-btn" routerLink="/products/list">Ir a Productos</button>
+    </div>
+
+    <!-- Restaurantes -->
+    <div class="dash-card">
+      <div class="dash-icon" style="background-image: url('../../../assets/img/yeti.webp');"></div>
+      <h3>Restaurantes</h3>
+      <p>Administra los restaurantes asociados</p>
+      <button class="dash-btn" routerLink="/restaurants/list">Ir a Restaurantes</button>
+    </div>
+
+    <!-- Menús -->
+    <div class="dash-card">
+      <div class="dash-icon" style="background-image: url('../../../assets/img/yeti.webp');"></div>
+      <h3>Menús</h3>
+      <p>Crea y actualiza los menús de cada restaurante</p>
+      <button class="dash-btn" routerLink="/menus/list">Ir a Menús</button>
+    </div>
+
+    <!-- Pedidos -->
+    <div class="dash-card">
+      <div class="dash-icon" style="background-image: url('../../../assets/img/yeti.webp');"></div>
+      <h3>Pedidos</h3>
+      <p>Monitorea los pedidos activos y completados</p>
+      <button class="dash-btn" routerLink="/orders/list">Ir a Pedidos</button>
+    </div>
+  </div>
+
+  <!-- SECCIÓN DE ESTADÍSTICAS
+  <div class="stats-grid">
+    <div class="stat-card">
+      <h4>Total Productos</h4>
+      <p class="stat-number">{{ totalProducts }}</p>
+    </div>
+    <div class="stat-card">
+      <h4>Total Restaurantes</h4>
+      <p class="stat-number">{{ totalRestaurants }}</p>
+    </div>
+    <div class="stat-card">
+      <h4>Pedidos Hoy</h4>
+      <p class="stat-number">{{ ordersToday }}</p>
+    </div>
+    <div class="stat-card">
+      <h4>Pedidos Completados</h4>
+      <p class="stat-number">{{ completedOrders }}</p>
+    </div>
+  </div>
+ -->
 </div>

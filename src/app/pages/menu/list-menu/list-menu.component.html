@@ -1,44 +1,49 @@
-<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8"></div>
+<div class="header-dark pb-4 pt-5 pt-md-8">
+  <h1>Menús</h1>
+</div>
+
 <!-- Page content -->
-<div class="container-fluid mt--7">
-    <!-- Table -->
+<div class="container-fluid mt--4">
     <div class="row">
         <div class="col">
-            <div class="card shadow">
-                <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
-                    <h3 class="mb-0">Menú {{ selectedRestaurantId ? '- ' + getRestaurantName(selectedRestaurantId) : '' }}</h3>
+            <div class="card card-dark shadow">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h3 class="mb-0">
+                        Menú {{ selectedRestaurantId ? '- ' + getRestaurantName(selectedRestaurantId) : '' }}
+                    </h3>
                     <div *ngIf="!selectedRestaurantId">
-                        <button class="btn btn-info btn-md mr-2" [routerLink]="['/menus/create']">Crear</button>
+                        <button class="btn btn-dark-info btn-md" [routerLink]="['/menus/create']">Crear</button>
                     </div>
                 </div>
                 <div class="card-body">
-                    <table class="table table-striped table-hover table-bordered align-middle">
-                        <thead class="bg-blue text-white">
-                            <tr>
-                                <th class="px-4 py-3">Producto</th>
-                                <th class="px-4 py-3">Restaurante</th>
-                                <th class="px-4 py-3">Precio</th>
-                                <th class="px-4 py-3">Disponible</th>
-                                <th class="px-4 py-3" *ngIf="!selectedRestaurantId">Opciones</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr *ngFor="let menu of filteredMenus">
-                                <td class="px-4 py-3">{{ getProductName(menu.product_id) }}</td>
-                                <td class="px-4 py-3">{{ getRestaurantName(menu.restaurant_id) }}</td>
-                                <td class="px-4 py-3">${{ menu.price }}</td>
-                                <td class="px-4 py-3">
-                                    <span *ngIf="menu.availability" class="badge badge-success">Sí</span>
-                                    <span *ngIf="!menu.availability" class="badge badge-danger">No</span>
-                                </td>
-                                <td class="px-4 py-3" *ngIf="!selectedRestaurantId">
-                                    <button class="btn btn-warning btn-sm mr-2" [routerLink]="['/menus/update', menu.id]">Editar</button>
-                                    <button class="btn btn-danger btn-sm" (click)="deleteMenu(menu.id)">Eliminar</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-dark-striped table-hover table-bordered align-middle">
+                            <thead class="thead-dark-blue text-white">
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Restaurante</th>
+                                    <th>Precio</th>
+                                    <th>Disponible</th>
+                                    <th *ngIf="!selectedRestaurantId">Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let menu of filteredMenus">
+                                    <td>{{ getProductName(menu.product_id) }}</td>
+                                    <td>{{ getRestaurantName(menu.restaurant_id) }}</td>
+                                    <td>${{ menu.price }}</td>
+                                    <td>
+                                        <span *ngIf="menu.availability" class="badge badge-dark-success">Sí</span>
+                                        <span *ngIf="!menu.availability" class="badge badge-dark-danger">No</span>
+                                    </td>
+                                    <td *ngIf="!selectedRestaurantId">
+                                        <button class="btn btn-dark-warning btn-sm mr-2" [routerLink]="['/menus/update', menu.id]">Editar</button>
+                                        <button class="btn btn-dark-danger btn-sm" (click)="deleteMenu(menu.id)">Eliminar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

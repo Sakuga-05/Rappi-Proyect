@@ -1,1 +1,142 @@
-.table-responsive { padding: 1rem; }
+/* ===== GLOBAL ===== */
+body, html {
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at bottom, #0d2740, #0a1b2e, #03101e);
+  color: #d9efff;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== HEADER ===== */
+.header-dark {
+  height: 120px;
+  background: linear-gradient(135deg, #123a57, #165072, #1a6a94);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #e8f6ff;
+  font-size: 32px;
+  font-weight: 700;
+  text-shadow: 0 0 12px rgba(120,200,255,0.4);
+  border-bottom: 1px solid rgba(180,220,255,0.4);
+}
+
+/* ===== CARD DARK ===== */
+.card-dark {
+  background: linear-gradient(145deg, #0e2a44, #123a57);
+  border: 2px solid rgba(120,200,255,0.4);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 8px 18px rgba(0, 100, 150, 0.35),
+              inset 0 0 14px rgba(255,255,255,0.07);
+  margin-bottom: 30px;
+}
+
+/* ===== BOTONES DARK ===== */
+.btn-dark-info {
+  background: linear-gradient(135deg, #0079b7, #4bcfff);
+  border: 2px solid #b4e7ff;
+  color: #fff;
+  border-radius: 12px;
+  padding: 8px 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-dark-warning {
+  background: #ff9f43;
+  color: #fff;
+  border-radius: 12px;
+  border: none;
+  padding: 6px 12px;
+}
+
+.btn-dark-danger {
+  background: #ff4b5c;
+  color: #fff;
+  border-radius: 12px;
+  border: none;
+  padding: 6px 12px;
+}
+
+.btn-dark-info:hover,
+.btn-dark-warning:hover,
+.btn-dark-danger:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+/* ===== TABLA DARK ===== */
+.table-dark-striped {
+  width: 100%;
+  border-collapse: collapse;
+  color: #e8f6ff;
+}
+
+.table-dark-striped th,
+.table-dark-striped td {
+  padding: 12px;
+  text-align: center;
+}
+
+.thead-dark-blue {
+  background: #123a57;
+}
+
+.badge-dark-success {
+  background: #28a745;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.badge-dark-danger {
+  background: #dc3545;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.container-fluid {
+  padding: 40px 24px;
+  background-image: url('../../../../assets/img/fondo.png');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+/* RESPONSIVE */
+.table-responsive {
+  overflow-x: auto;
+}
+
+@media (max-width: 992px) {
+  .header-dark {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-dark {
+    padding: 16px;
+  }
+
+  .btn-dark-info,
+  .btn-dark-warning,
+  .btn-dark-danger {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-dark {
+    font-size: 22px;
+  }
+
+  .table-dark-striped th,
+  .table-dark-striped td {
+    padding: 8px;
+  }
+}

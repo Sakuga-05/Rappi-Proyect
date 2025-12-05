@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/User';
 import { SecurityService } from 'src/app/services/security.service';
@@ -83,6 +83,26 @@ export class LoginComponent implements OnInit, OnDestroy {
     .catch(err => {
       console.error(err);
       Swal.fire("Error", "No se pudo iniciar sesión con GitHub", "error");
+    });
+  }
+
+  //Login por Microsoft
+  LogInMicrosoft() {
+    this.securityService.loginWithMicrosoft()
+    .then(() => {
+      Swal.fire({
+        title: "Inicio de sesión exitoso",
+        text: "Has iniciado sesión con Microsoft",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false
+      }).then(() => {
+        this.router.navigate(["dashboard"]);
+      });
+    })
+    .catch(err => {
+      console.error(err);
+      Swal.fire("Error", "No se pudo iniciar sesión con Microsoft", "error");
     });
   }
 
