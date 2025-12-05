@@ -19,7 +19,6 @@
                                 <th class="px-4 py-3">Nombre</th>
                                 <th class="px-4 py-3">Email</th>
                                 <th class="px-4 py-3">Teléfono</th>
-                                <th class="px-4 py-3">Creado</th>
                                 <th class="px-4 py-3">Opciones</th>
                             </tr>
                         </thead>
@@ -30,7 +29,6 @@
                                 <td class="px-4 py-3">{{user.name}}</td>
                                 <td class="px-4 py-3">{{user.email}}</td>
                                 <td class="px-4 py-3">{{user.phone}}</td>
-                                <td class="px-4 py-3">{{user.created_at | date:'short'}}</td>
                                 <td class="px-4 py-3">
                                     <button class="btn btn-warning btn-sm mr-2" [routerLink]="['/users/view', user.id]">Info</button>
                                     <button class="btn btn-warning btn-sm mr-2" [routerLink]="['/users/update', user.id]">Editar</button>
