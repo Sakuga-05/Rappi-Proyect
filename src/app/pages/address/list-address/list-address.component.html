@@ -1,41 +1,51 @@
-<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8"></div>
-<div class="container-fluid mt--7">
-    <div class="row">
-        <div class="col">
-            <div class="card shadow">
-                <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
-                    <h3 class="mb-0">Direcciones</h3>
-                    <div>
-                        <button class="btn btn-info btn-md mr-2" [routerLink]="['/orders/list']">Volver</button>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <table class="table table-striped table-hover table-bordered align-middle">
-                        <thead class="bg-blue text-white">
-                            <tr>
-                                <th class="px-4 py-3">Calle</th>
-                                <th class="px-4 py-3">Ciudad</th>
-                                <th class="px-4 py-3">Código Postal</th>
-                                <th class="px-4 py-3">Pedido</th>
-                                <th class="px-4 py-3">Opciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let address of addresses">
-                                <td class="px-4 py-3">{{address.street}}</td>
-                                <td class="px-4 py-3">{{address.city}}</td>
-                                <td class="px-4 py-3">{{address.postal_code}}</td>
-                                <td class="px-4 py-3">{{ getOrderLabel(address.order_id) }}</td>
-                                <td class="px-4 py-3">
-                                    <button class="btn btn-warning btn-sm mr-2" [routerLink]="['/addresses/view', address.id]">Info</button>
-                                    <button class="btn btn-warning btn-sm mr-2" [routerLink]="['/addresses/update', address.id]">Editar</button>
-                                    <button class="btn btn-danger btn-sm" (click)="deleteAddress(address.id)">Eliminar</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+<!-- HEADER DASHBOARD -->
+<div class="header-dashboard">
+  <div class="container-fluid">
+    <div class="header-body">
+      <h1 class="title-dashboard">Direcciones</h1>
+      <p class="subtitle-dashboard">Gestiona las direcciones de tus pedidos de manera fácil</p>
     </div>
+  </div>
+</div>
+
+<!-- TABLE CONTENT -->
+<div class="container-fluid mt--7">
+  <div class="row justify-content-center">
+    <div class="col-lg-10 col-md-12">
+      <div class="card card-ice shadow">
+        <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
+          <h3 class="mb-0">Listado de Direcciones</h3>
+          <div>
+            <button class="btn btn-ice-info btn-md" [routerLink]="['/orders/list']">Volver</button>
+          </div>
+        </div>
+        <div class="card-body table-responsive">
+          <table class="table table-ice table-hover align-middle">
+            <thead>
+              <tr>
+                <th>Calle</th>
+                <th>Ciudad</th>
+                <th>Código Postal</th>
+                <th>Pedido</th>
+                <th>Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let address of addresses">
+                <td>{{address.street}}</td>
+                <td>{{address.city}}</td>
+                <td>{{address.postal_code}}</td>
+                <td>{{ getOrderLabel(address.order_id) }}</td>
+                <td class="d-flex flex-wrap gap-1">
+                  <button class="btn btn-ice-warning btn-sm" [routerLink]="['/addresses/view', address.id]">Info</button>
+                  <button class="btn btn-ice-warning btn-sm" [routerLink]="['/addresses/update', address.id]">Editar</button>
+                  <button class="btn btn-ice-danger btn-sm" (click)="deleteAddress(address.id)">Eliminar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

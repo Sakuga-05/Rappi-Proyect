@@ -1,1 +1,163 @@
-.card-header .btn { min-width: 100px; }
+/* ===== GLOBAL ===== */
+body, html {
+  font-family: 'Poppins', sans-serif;
+  background-image: url('../../../../assets/img/fondo.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #e8f6ff;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== HEADER DASHBOARD ===== */
+.header-dashboard {
+  background: linear-gradient(135deg, #0e2a44, #123a57, #155377);
+  padding: 60px 0 40px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 2px solid rgba(120,200,255,0.3);
+}
+
+.header-dashboard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 30%, rgba(120,220,255,0.15), transparent 60%);
+  filter: blur(60px);
+  opacity: 0.5;
+}
+
+.title-dashboard {
+  font-size: 34px;
+  font-weight: 800;
+  color: #e8f6ff;
+  margin-bottom: 6px;
+  text-shadow: 0 0 12px rgba(0,80,120,0.4);
+}
+
+.subtitle-dashboard {
+  font-size: 16px;
+  font-weight: 500;
+  color: #d0f0ff;
+  opacity: 0.85;
+}
+
+/* ===== CARD ICE ===== */
+.card-ice {
+  background: linear-gradient(145deg, #0e2a44, #123a57);
+  border: 2px solid rgba(120,200,255,0.35);
+  border-radius: 18px;
+  color: #e8f6ff;
+  box-shadow: 0 8px 18px rgba(0,100,150,0.35), inset 0 0 14px rgba(255,255,255,0.07);
+  backdrop-filter: blur(6px);
+  margin-bottom: 30px;
+}
+
+/* ===== TABLE ICE ===== */
+.table-ice {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: rgba(255,255,255,0.05);
+  color: #e8f6ff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.table-ice thead {
+  background: linear-gradient(90deg, #0079b7, #4bcfff);
+  color: #fff;
+}
+
+.table-ice th, .table-ice td {
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.table-ice tbody tr:hover {
+  background: rgba(75,207,255,0.15);
+  cursor: pointer;
+}
+
+/* ===== BADGES ===== */
+.badge-pending {
+  background-color: #ffc107;
+  color: #123a57;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.badge-preparing {
+  background-color: #17a2b8;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.badge-ready {
+  background-color: #28a745;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.badge-delivered {
+  background-color: #007bff;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+/* ===== BUTTONS ICE ===== */
+.btn-ice-info {
+  background: linear-gradient(135deg, #0079b7, #4bcfff);
+  border: 2px solid #b4e7ff;
+  color: #0e2a44;
+  border-radius: 12px;
+  font-weight: 700;
+  padding: 6px 14px;
+  transition: 0.3s ease;
+}
+
+.btn-ice-warning {
+  background: linear-gradient(135deg, #ffc107, #ffdd57);
+  border: 2px solid #ffe08a;
+  color: #123a57;
+  border-radius: 12px;
+  font-weight: 700;
+  padding: 5px 12px;
+  transition: 0.3s ease;
+}
+
+.btn-ice-danger {
+  background: linear-gradient(135deg, #ff4d4d, #ff7a7a);
+  border: 2px solid #ff9a9a;
+  color: #123a57;
+  border-radius: 12px;
+  font-weight: 700;
+  padding: 5px 12px;
+  transition: 0.3s ease;
+}
+
+.btn-ice-info:hover,
+.btn-ice-warning:hover,
+.btn-ice-danger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(75,207,255,0.4);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .table-ice th, .table-ice td {
+    padding: 8px 10px;
+  }
+  .d-flex.flex-wrap.gap-1 {
+    flex-direction: column;
+  }
+}
