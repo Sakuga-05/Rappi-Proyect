@@ -13,7 +13,7 @@ export const environment = {
   messagingSenderId: "29089216541",
   appId: "1:29089216541:web:81ec16958a86712b2e2ef4"
 },
-  url_graficas: "https://7e7398ce-1119-4893-bb8b-fe248a1aeec4.mock.pstmn.io"
+  url_graficas: "https://a9ec5023-b034-40a4-a04f-e7719fdfbef0.mock.pstmn.io"
 };
 
 /*

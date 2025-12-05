@@ -10,7 +10,7 @@ const app = express();
 app.use(bodyParser.json({ limit: '1mb' }));
 
 const PORT = process.env.PORT || 5000;
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY || null;
+const GEMINI_API_KEY = (process.env.GEMINI_API_KEY || '').trim() || null;
 const GEMINI_ENDPOINT = process.env.GEMINI_ENDPOINT || null; // legacy support (not used with @google/genai)
 const REPO_ROOT = process.env.REPO_ROOT || path.resolve(__dirname);
 const CHATBOT_CONFIG_PATH = path.join(REPO_ROOT, 'src', 'assets', 'chatbot-config.json');
