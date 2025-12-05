@@ -1,28 +1,31 @@
-<div class="header bg-gradient-danger pb-0 pt-1 pt-md-8">
-    <div class="container-fluid">
-        <div class="header-body">
-            <div class="d-flex align-items-center justify-content-center center-viewport">
-                <div class="card text-center card-sm border border-dark">
-                    <div class="card-body">
-                        <div class="bg-gradient-danger text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3 icon-circle" aria-hidden="true" style="width: 80px; height: 80px; font-size: 32px;">
-                            <i class="bi bi-people-fill"></i>
-                        </div>
-                        <button class="btn text-white btn-block bg-gradient-danger" routerLink="/users/list">Gestionar Usuario</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="header">
+  <h2 class="text-white mx-auto">Usuarios & Restaurantes</h2>
 </div>
-<div class="container-fluid mt-5">
-    <div class="d-flex align-items-center justify-content-center center-viewport">
-        <div class="card text-center card-sm border border-dark">
-            <div class="card-body">
-                <div class="bg-gradient-danger text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3 icon-circle" aria-hidden="true" style="width: 80px; height: 80px; font-size: 32px;">
-                    <i class="bi bi-shop"></i>
-                </div>
-                <button class="btn text-white btn-block bg-gradient-danger" routerLink="/restaurants/view-menu">Comprar Comida</button>
-            </div>
-        </div>
+
+<div class="container-fluid">
+
+  <div class="cards-wrapper">
+
+    <!-- CARD 1 -->
+    <div class="card card-sm text-center">
+      <div class="card-body">
+        <div class="icon-circle"></div>
+        <button class="btn text-white btn-block" routerLink="/users/list">
+          Gestionar Usuario
+        </button>
+      </div>
     </div>
+
+    <!-- CARD 2 -->
+    <div class="card card-sm text-center">
+      <div class="card-body">
+        <div class="icon-circle2"></div>
+        <button class="btn text-white btn-block" routerLink="/restaurants/view-menu">
+          Comprar Comida
+        </button>
+      </div>
+    </div>
+
+  </div>
+
 </div>

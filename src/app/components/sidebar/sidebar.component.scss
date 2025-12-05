@@ -1,5 +1,121 @@
+/* === SIDEBAR GENERAL === */
+.cont {
+  background: linear-gradient(135deg, #a8d9f3 0%, #d4efff 50%, #c7e9ff 100%) !important;
+}
+
+.navbar-vertical {
+  background: linear-gradient(180deg, #1a3a4d 0%, #0f2535 100%) !important;
+  border-right: 2px solid #2a5a7a;
+  box-shadow: 6px 0 16px rgba(0, 102, 204, 0.2);
+  color: #d0e8ff;
+}
+
+/* Remueve blanco de Bootstrap */
+.bg-white {
+  background: transparent !important;
+}
+
+/* === BRAND === */
+.navbar-brand {
+  padding: 20px 12px;
+  margin-bottom: 18px;
+  border-bottom: 2px solid #2a5a7a;
+  background: linear-gradient(135deg, rgba(75, 207, 255, 0.15) 0%, rgba(0, 212, 255, 0.08) 100%);
+}
+
 .navbar-brand-img {
-  height: 150px;
-  width: auto;
-  object-fit: contain;
+  max-height: 42px;
+  transition: all 0.3s ease;
+  filter: brightness(1) contrast(1.15);
+}
+
+.navbar-brand-img:hover {
+  filter: brightness(1.2) drop-shadow(0 0 12px rgba(75, 207, 255, 0.5));
+}
+
+/* === LINKS === */
+.nav-link {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  color: #a8d4ff !important;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin: 6px 8px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-link i {
+  font-size: 1.2rem;
+  margin-right: 10px;
+  opacity: 0.85;
+  transition: all 0.3s ease;
+}
+
+/* === HOVER === */
+.nav-link:hover {
+  background: linear-gradient(135deg, #2a5a7a 0%, #234a6a 100%);
+  color: #ffffff !important;
+  transform: translateX(6px);
+  box-shadow: inset 0 0 12px rgba(75, 207, 255, 0.2);
+}
+
+.nav-link:hover i {
+  opacity: 1;
+  color: #4bcfff;
+}
+
+/* === ACTIVE === */
+.nav-link.active {
+  background: linear-gradient(135deg, #3a7aaa 0%, #2f6a9a 100%) !important;
+  border-left: 4px solid #4bcfff;
+  color: #ffffff !important;
+  font-weight: 700;
+  padding-left: 12px;
+  box-shadow: inset 0 0 16px rgba(75, 207, 255, 0.25);
+}
+
+/* icon active */
+.nav-link.active i {
+  color: #4bcfff;
+  opacity: 1;
+}
+
+/* === SCROLL ELEGANTE === */
+.navbar-vertical .navbar-nav {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #4a8aaa #1a3a4d;
+}
+
+.navbar-vertical .navbar-nav::-webkit-scrollbar {
+  width: 6px;
+}
+
+.navbar-vertical .navbar-nav::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #4a8aaa 0%, #3a7aaa 100%);
+  border-radius: 10px;
+}
+
+.navbar-vertical .navbar-nav::-webkit-scrollbar-track {
+  background: #1a3a4d;
+}
+
+/* === SEPARACIÓN ENTRE SIDEBAR Y BODY === */
+body {
+  background: #141414 !important;
+}
+
+#sidenav-main {
+  box-shadow: 6px 0 16px rgba(0, 102, 204, 0.25);
+}
+
+/* === MOBILE === */
+@media (max-width: 768px) {
+  .navbar-vertical {
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+  }
 }
