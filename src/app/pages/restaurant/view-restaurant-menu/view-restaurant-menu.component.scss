@@ -1,0 +1,160 @@
+/* ===== GLOBAL ===== */
+body {
+  background: linear-gradient(135deg, #0c1d2c 0%, #10344e 60%, #0e2a44 100%);
+  font-family: "Poppins", sans-serif;
+  color: #e8f6ff;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== HEADER ===== */
+.header-users {
+  height: 150px;
+  background: linear-gradient(135deg, #0e2a44, #155377, #1a6a94);
+  border-bottom: 2px solid rgba(120,200,255,0.4);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* light fog */
+.header-users::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 40% 10%, rgba(255,255,255,0.25), transparent 65%);
+  filter: blur(50px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.header-users .title {
+  font-size: 38px;
+  font-weight: 800;
+  color: #e8f6ff;
+  text-shadow: 0 0 12px rgba(120,200,255,0.4);
+}
+
+/* ===== BACKGROUND IMAGE ===== */
+.cont {
+  background-image: url('../../../../assets/img/fondo.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* ===== WRAPPER ===== */
+.restaurants-wrapper {
+  padding: 50px 70px;
+}
+
+/* ===== CARD ===== */
+.ice-card {
+  background: #0e2b45;
+  border: 2px solid rgba(120,200,255,0.35);
+  border-radius: 18px;
+
+  box-shadow:
+    0 6px 22px rgba(0, 80, 120, 0.35);
+
+  padding: 10px;
+  overflow: hidden;
+  position: relative;
+
+  animation: floatCard 7s ease-in-out infinite;
+  transition: 0.3s ease-in-out;
+}
+
+/* subtle floating animation */
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* hover glow */
+.ice-card:hover {
+  box-shadow:
+    0 12px 36px rgba(120,200,255,0.45),
+    0 0 16px rgba(120,220,255,0.35);
+  border-color: rgba(160,230,255,0.7);
+}
+
+/* ===== CARD HEADER ===== */
+.ice-header {
+  padding: 18px 26px;
+  background: rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(160,210,255,0.25);
+  font-weight: 700;
+  color: #dff3ff;
+}
+
+/* ===== BODY ===== */
+.ice-body {
+  padding: 20px 28px;
+}
+
+/* ===== TABLE ===== */
+.ice-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  color: #e8f6ff;
+  font-size: 15px;
+  text-align: center;
+}
+
+/* THEAD */
+.ice-table thead {
+  background: rgba(80,180,255,0.25);
+}
+
+.ice-table th {
+  padding: 14px;
+  font-weight: 700;
+}
+
+/* ===== ROWS ===== */
+.ice-table tbody tr {
+  background: rgba(255,255,255,0.07);
+  transition: 0.3s ease;
+  border-radius: 8px;
+}
+
+.ice-table tbody tr:hover {
+  background: rgba(120,200,255,0.22);
+  transform: scale(1.008);
+}
+
+/* ===== CELLS ===== */
+.ice-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid rgba(180,220,255,0.12);
+}
+
+/* ===== BUTTONS ===== */
+.ice-btn-sm {
+  padding: 6px 10px;
+  font-size: 13px;
+  background: #0097d6;
+  border: 1px solid #9bdfff;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,200,255,0.25);
+  transition: 0.25s ease;
+}
+
+/* HOVER */
+.ice-btn-sm:hover {
+  background: #00e9ff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 16px rgba(120,220,255,0.6);
+}
+
+h3 {
+  color: white;
+}
