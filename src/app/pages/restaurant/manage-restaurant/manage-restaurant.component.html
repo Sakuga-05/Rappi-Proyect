@@ -1,243 +1,81 @@
-<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8"></div>
+<!-- HEADER DASHBOARD -->
+<div class="header-dashboard">
+  <div class="container-fluid">
+    <div class="header-body">
+      <h1 class="title-dashboard">
+        {{ mode === 1 ? 'Info Restaurante' : mode === 2 ? 'Crear Restaurante' : 'Editar Restaurante' }}
+      </h1>
+      <p class="subtitle-dashboard">Gestiona los restaurantes de manera rápida y segura</p>
+    </div>
+  </div>
+</div>
 
+<!-- FORM CONTENT -->
 <div class="container-fluid mt--7">
-  <div class="row">
-    <div class="col">
-      <div class="card shadow">
-
-        <div class="card-header bg-transparent">
-          <h3 *ngIf="mode === 1">Info Restaurante</h3>
-          <h3 *ngIf="mode === 2">Crear Restaurante</h3>
-          <h3 *ngIf="mode === 3">Editar Restaurante</h3>
-        </div>
-
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+      <div class="card card-ice shadow">
         <div class="card-body">
-          <form class="form" [formGroup]="theFormGroup">
-            <div class="card-body container">
+          <form [formGroup]="theFormGroup">
+            <div class="form-row">
 
               <!-- ID -->
-              <div class="row">
-                <div class="col-3">ID</div>
-                <div class="col-9">
-                  <input
-                    type="text"
-                    class="form-control"
-                    formControlName="id"
-                    disabled
-                  />
-                </div>
+              <div class="form-group col-12 col-md-3">ID</div>
+              <div class="form-group col-12 col-md-9">
+                <input type="text" class="form-control input-ice" formControlName="id" disabled>
               </div>
-
-              <br />
 
               <!-- Nombre -->
-              <div class="row">
-                <div class="col-3">Nombre</div>
-                <div class="col-9">
-                  <input
-                    type="text"
-                    class="form-control"
-                    [disabled]="mode == 1"
-                    formControlName="name"
-                  />
-
-                  <div
-                    *ngIf="
-                      getTheFormGroup.name.errors &&
-                      (getTheFormGroup.name.dirty ||
-                        getTheFormGroup.name.touched ||
-                        trySend)
-                    "
-                  >
-                    <strong
-                      *ngIf="getTheFormGroup.name.errors.required"
-                      class="msnError"
-                      >Requerido</strong
-                    >
-                    <strong
-                      *ngIf="getTheFormGroup.name.errors.minlength"
-                      class="msnError"
-                      >Mínimo 3 caracteres</strong
-                    >
-                    <strong
-                      *ngIf="getTheFormGroup.name.errors.maxlength"
-                      class="msnError"
-                      >Máximo 100 caracteres</strong
-                    >
-                  </div>
+              <div class="form-group col-12 col-md-3 mt-3">Nombre</div>
+              <div class="form-group col-12 col-md-9 mt-3">
+                <input type="text" class="form-control input-ice" [disabled]="mode==1" formControlName="name">
+                <div class="msnError" *ngIf="getTheFormGroup.name.errors && (getTheFormGroup.name.dirty || getTheFormGroup.name.touched || trySend)">
+                  <strong *ngIf="getTheFormGroup.name.errors.required">Requerido</strong>
+                  <strong *ngIf="getTheFormGroup.name.errors.minlength">Mínimo 3 caracteres</strong>
+                  <strong *ngIf="getTheFormGroup.name.errors.maxlength">Máximo 100 caracteres</strong>
                 </div>
               </div>
-
-              <br />
 
               <!-- Correo -->
-              <div class="row">
-                <div class="col-3">Correo</div>
-                <div class="col-9">
-                  <input
-                    class="form-control"
-                    [disabled]="mode == 1"
-                    formControlName="email"
-                  />
-
-                  <div
-                    *ngIf="
-                      getTheFormGroup.email.errors &&
-                      (getTheFormGroup.email.dirty ||
-                        getTheFormGroup.email.touched ||
-                        trySend)
-                    "
-                  >
-                    <strong
-                      *ngIf="getTheFormGroup.email.errors.required"
-                      class="msnError"
-                      >Requerido</strong
-                    >
-                    <strong
-                      *ngIf="getTheFormGroup.email.errors.email"
-                      class="msnError"
-                      >Correo inválido</strong
-                    >
-                    <strong
-                      *ngIf="getTheFormGroup.email.errors.maxlength"
-                      class="msnError"
-                      >Máximo 150 caracteres</strong
-                    >
-                  </div>
+              <div class="form-group col-12 col-md-3 mt-3">Correo</div>
+              <div class="form-group col-12 col-md-9 mt-3">
+                <input type="email" class="form-control input-ice" [disabled]="mode==1" formControlName="email">
+                <div class="msnError" *ngIf="getTheFormGroup.email.errors && (getTheFormGroup.email.dirty || getTheFormGroup.email.touched || trySend)">
+                  <strong *ngIf="getTheFormGroup.email.errors.required">Requerido</strong>
+                  <strong *ngIf="getTheFormGroup.email.errors.email">Correo inválido</strong>
+                  <strong *ngIf="getTheFormGroup.email.errors.maxlength">Máximo 150 caracteres</strong>
                 </div>
               </div>
-
-              <br />
 
               <!-- Teléfono -->
-              <div class="row">
-                <div class="col-3">Teléfono</div>
-                <div class="col-9">
-                  <input
-                    type="text"
-                    class="form-control"
-                    [disabled]="mode == 1"
-                    formControlName="phone"
-                  />
-
-                  <div
-                    *ngIf="
-                      getTheFormGroup.phone.errors &&
-                      (getTheFormGroup.phone.dirty ||
-                        getTheFormGroup.phone.touched ||
-                        trySend)
-                    "
-                  >
-                    <strong
-                      *ngIf="getTheFormGroup.phone.errors.required"
-                      class="msnError"
-                      >Requerido</strong
-                    >
-                    <strong
-                      *ngIf="getTheFormGroup.phone.errors.pattern"
-                      class="msnError"
-                      >Formato inválido</strong
-                    >
-                    <strong
-                      *ngIf="getTheFormGroup.phone.errors.minlength"
-                      class="msnError"
-                      >Mínimo 6 caracteres</strong
-                    >
-                    <strong
-                      *ngIf="getTheFormGroup.phone.errors.maxlength"
-                      class="msnError"
-                      >Máximo 20 caracteres</strong
-                    >
-                  </div>
+              <div class="form-group col-12 col-md-3 mt-3">Teléfono</div>
+              <div class="form-group col-12 col-md-9 mt-3">
+                <input type="text" class="form-control input-ice" [disabled]="mode==1" formControlName="phone">
+                <div class="msnError" *ngIf="getTheFormGroup.phone.errors && (getTheFormGroup.phone.dirty || getTheFormGroup.phone.touched || trySend)">
+                  <strong *ngIf="getTheFormGroup.phone.errors.required">Requerido</strong>
+                  <strong *ngIf="getTheFormGroup.phone.errors.pattern">Formato inválido</strong>
+                  <strong *ngIf="getTheFormGroup.phone.errors.minlength">Mínimo 6 caracteres</strong>
+                  <strong *ngIf="getTheFormGroup.phone.errors.maxlength">Máximo 20 caracteres</strong>
                 </div>
               </div>
-
-              <br />
 
               <!-- Dirección -->
-              <div class="row">
-                <div class="col-3">Dirección</div>
-                <div class="col-9">
-                  <input
-                    type="text"
-                    class="form-control"
-                    [disabled]="mode == 1"
-                    formControlName="address"
-                  />
-
-                  <div
-                    *ngIf="
-                      getTheFormGroup.address.errors &&
-                      (getTheFormGroup.address.dirty ||
-                        getTheFormGroup.address.touched ||
-                        trySend)
-                    "
-                  >
-                    <strong
-                      *ngIf="getTheFormGroup.address.errors.required"
-                      class="msnError"
-                      >Requerido</strong
-                    >
-                    <strong
-                      *ngIf="getTheFormGroup.address.errors.minlength"
-                      class="msnError"
-                      >Mínimo 3 caracteres</strong
-                    >
-                    <strong
-                      *ngIf="getTheFormGroup.address.errors.maxlength"
-                      class="msnError"
-                      >Máximo 200 caracteres</strong
-                    >
-                  </div>
+              <div class="form-group col-12 col-md-3 mt-3">Dirección</div>
+              <div class="form-group col-12 col-md-9 mt-3">
+                <input type="text" class="form-control input-ice" [disabled]="mode==1" formControlName="address">
+                <div class="msnError" *ngIf="getTheFormGroup.address.errors && (getTheFormGroup.address.dirty || getTheFormGroup.address.touched || trySend)">
+                  <strong *ngIf="getTheFormGroup.address.errors.required">Requerido</strong>
+                  <strong *ngIf="getTheFormGroup.address.errors.minlength">Mínimo 3 caracteres</strong>
+                  <strong *ngIf="getTheFormGroup.address.errors.maxlength">Máximo 200 caracteres</strong>
                 </div>
               </div>
 
-              <br />
-
               <!-- BUTTONS -->
-              <div class="row">
-                <div class="col-3"></div>
-                <div class="col-9">
-                  <!-- Regresar -->
-                  <button
-                    type="button"
-                    class="btn btn-primary btn-block"
-                    (click)="back()"
-                    *ngIf="mode == 1"
-                  >
-                    Regresar
-                  </button>
-
-                  <!-- Crear -->
-                  <button
-                    type="button"
-                    class="btn btn-success btn-block"
-                    (click)="createRestaurant()"
-                    *ngIf="mode == 2"
-                  >
-                    Crear
-                  </button>
-
-                  <!-- Actualizar -->
-                  <button
-                    type="button"
-                    class="btn btn-warning btn-block"
-                    (click)="updateRestaurant()"
-                    *ngIf="mode == 3"
-                  >
-                    Actualizar
-                  </button>
-
-                  <!-- Cancelar -->
-                  <button
-                    type="button"
-                    class="btn btn-primary btn-block"
-                    (click)="back()"
-                    *ngIf="mode == 2 || mode == 3"
-                  >
-                    Cancelar
-                  </button>
-                </div>
+              <div class="form-group col-12 mt-4 d-flex flex-wrap gap-2">
+                <button type="button" class="btn btn-primary btn-ice-block" (click)="back()" *ngIf="mode==1">Regresar</button>
+                <button type="button" class="btn btn-success btn-ice-block" (click)="createRestaurant()" *ngIf="mode==2">Crear</button>
+                <button type="button" class="btn btn-warning btn-ice-block" (click)="updateRestaurant()" *ngIf="mode==3">Actualizar</button>
+                <button type="button" class="btn btn-primary btn-ice-block" (click)="back()" *ngIf="mode==2 || mode==3">Cancelar</button>
               </div>
 
             </div>

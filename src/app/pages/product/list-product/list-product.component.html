@@ -1,38 +1,45 @@
-<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8"></div>
-<!-- Page content -->
+<!-- HEADER -->
+<div class="header-dashboard">
+  <div class="container-fluid">
+    <div class="header-body">
+      <h1 class="title-dashboard">Gestión de Productos</h1>
+      <p class="subtitle-dashboard">Administra los productos de tus restaurantes</p>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE CONTENT -->
 <div class="container-fluid mt--7">
-    <!-- Table -->
     <div class="row">
         <div class="col">
-            <div class="card shadow">
+            <div class="card shadow card-ice">
                 <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
                     <h3 class="mb-0">Productos</h3>
                     <div>
-                        <button class="btn btn-info btn-md mr-2" [routerLink]="['/products/create']">Crear</button>
+                        <button class="btn btn-ice" [routerLink]="['/products/create']">Crear</button>
                     </div>
                 </div>
-                <div class="card-body">
-                    <table class="table table-striped table-hover table-bordered align-middle">
-                        <thead class="bg-blue text-white">
+                <div class="card-body table-responsive">
+                    <table class="table table-ice table-striped table-hover table-bordered align-middle">
+                        <thead>
                             <tr>
-                                <th class="px-4 py-3">Nombre</th>
-                                <th class="px-4 py-3">Descripción</th>
-                                <th class="px-4 py-3">Categoria</th>
-                                <th class="px-4 py-3">Precio</th>
-                                <th class="px-4 py-3">Opciones</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th>Categoria</th>
+                                <th>Precio</th>
+                                <th>Opciones</th>
                             </tr>
                         </thead>
-
                         <tbody>
                             <tr *ngFor="let product of products">
-                                <td class="px-4 py-3">{{product.name}}</td>
-                                <td class="px-4 py-3">{{product.description}}</td>
-                                <td class="px-4 py-3">{{product.category}}</td>
-                                <td class="px-4 py-3">{{product.price}}</td>
-                                <td class="px-4 py-3">
-                                    <button class="btn btn-warning btn-sm mr-2" [routerLink]="['/products/view', product.id]">Info</button>
-                                    <button class="btn btn-warning btn-sm mr-2" [routerLink]="['/products/update', product.id]">Editar</button>
-                                    <button class="btn btn-danger btn-sm" (click)="deleteProduct(product.id)">Eliminar</button>
+                                <td>{{ product.name }}</td>
+                                <td>{{ product.description }}</td>
+                                <td>{{ product.category }}</td>
+                                <td>${{ product.price }}</td>
+                                <td>
+                                    <button class="btn btn-ice-warning btn-sm mr-2" [routerLink]="['/products/view', product.id]">Info</button>
+                                    <button class="btn btn-ice-warning btn-sm mr-2" [routerLink]="['/products/update', product.id]">Editar</button>
+                                    <button class="btn btn-ice-danger btn-sm" (click)="deleteProduct(product.id)">Eliminar</button>
                                 </td>
                             </tr>
                         </tbody>

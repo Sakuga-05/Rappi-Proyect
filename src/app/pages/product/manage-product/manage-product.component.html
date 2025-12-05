@@ -1,230 +1,76 @@
-<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8"></div>
+<!-- HEADER -->
+<div class="header-dashboard">
+  <div class="container-fluid">
+    <div class="header-body">
+      <h1 class="title-dashboard">
+        {{ mode == 1 ? 'Info Producto' : (mode == 2 ? 'Crear Producto' : 'Actualizar Producto') }}
+      </h1>
+      <p class="subtitle-dashboard">Administra la información de tus productos de manera rápida y segura</p>
+    </div>
+  </div>
+</div>
 
+<!-- PAGE CONTENT -->
 <div class="container-fluid mt--7">
-  <div class="row">
-    <div class="col">
-      <div class="card shadow">
-
-        <div class="card-header bg-transparent">
-          <h3 class="mb-0" *ngIf="mode == 1">Info Producto</h3>
-          <h3 class="mb-0" *ngIf="mode == 2">Crear</h3>
-          <h3 class="mb-0" *ngIf="mode == 3">Actualizar</h3>
-        </div>
-
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card card-ice shadow">
         <div class="card-body">
 
-          <form class="form" [formGroup]="theFormGroup">
-            <div class="card-body container">
+          <form [formGroup]="theFormGroup">
+            <div class="form-group mb-3">
+              <label>ID</label>
+              <input type="text" class="form-control" formControlName="id" disabled>
+            </div>
 
-              <!-- ID -->
-              <div class="row">
-                <div class="col-3">ID</div>
-                <div class="col-9">
-                  <input
-                    type="text"
-                    class="form-control"
-                    formControlName="id"
-                    disabled
-                  />
-                </div>
+            <div class="form-group mb-3">
+              <label>Nombre</label>
+              <input type="text" class="form-control" formControlName="name" [disabled]="mode == 1">
+              <div class="text-error" *ngIf="getTheFormGroup.name.errors && (getTheFormGroup.name.dirty || getTheFormGroup.name.touched || trySend)">
+                <small *ngIf="getTheFormGroup.name.errors.required">Requerido</small>
+                <small *ngIf="getTheFormGroup.name.errors.minlength">Mínimo 3 caracteres</small>
+                <small *ngIf="getTheFormGroup.name.errors.maxlength">Máximo 100 caracteres</small>
               </div>
+            </div>
 
-              <br />
-
-              <!-- NAME -->
-              <div class="row">
-                <div class="col-3">Nombre</div>
-                <div class="col-9">
-                  <input
-                    type="text"
-                    class="form-control"
-                    [disabled]="mode == 1"
-                    formControlName="name"
-                  />
-
-                  <div
-                    *ngIf="
-                      getTheFormGroup.name.errors &&
-                      (getTheFormGroup.name.dirty ||
-                        getTheFormGroup.name.touched ||
-                        trySend)
-                    "
-                  >
-                    <strong
-                      *ngIf="getTheFormGroup.name.errors.required"
-                      class="msnError"
-                      >Requerido</strong>
-                    <strong
-                      *ngIf="getTheFormGroup.name.errors.minlength"
-                      class="msnError"
-                      >Mínimo 3 caracteres</strong>
-                    <strong
-                      *ngIf="getTheFormGroup.name.errors.maxlength"
-                      class="msnError"
-                      >Máximo 100 caracteres</strong>
-                  </div>
-                </div>
+            <div class="form-group mb-3">
+              <label>Descripción</label>
+              <textarea class="form-control" rows="3" formControlName="description" [disabled]="mode == 1"></textarea>
+              <div class="text-error" *ngIf="getTheFormGroup.description.errors && (getTheFormGroup.description.dirty || getTheFormGroup.description.touched || trySend)">
+                <small *ngIf="getTheFormGroup.description.errors.required">Requerido</small>
+                <small *ngIf="getTheFormGroup.description.errors.minlength">Mínimo 3 caracteres</small>
+                <small *ngIf="getTheFormGroup.description.errors.maxlength">Máximo 100 caracteres</small>
               </div>
+            </div>
 
-              <br />
-
-              <!-- DESCRIPTION -->
-              <div class="row">
-                <div class="col-3">Descripción</div>
-                <div class="col-9">
-                  <textarea
-                    class="form-control"
-                    [disabled]="mode == 1"
-                    formControlName="description"
-                    rows="3"
-                  ></textarea>
-
-                  <div
-                    *ngIf="
-                      getTheFormGroup.description.errors &&
-                      (getTheFormGroup.description.dirty ||
-                        getTheFormGroup.description.touched ||
-                        trySend)
-                    "
-                  >
-                    <strong
-                      *ngIf="getTheFormGroup.description.errors.required"
-                      class="msnError"
-                      >Requerido</strong>
-                    <strong
-                      *ngIf="getTheFormGroup.description.errors.minlength"
-                      class="msnError"
-                      >Mínimo 3 caracteres</strong>
-                    <strong
-                      *ngIf="getTheFormGroup.description.errors.maxlength"
-                      class="msnError"
-                      >Máximo 100 caracteres</strong>
-                  </div>
-                </div>
+            <div class="form-group mb-3">
+              <label>Precio</label>
+              <input type="number" class="form-control" formControlName="price" [disabled]="mode == 1" min="0.01" step="0.01">
+              <div class="text-error" *ngIf="getTheFormGroup.price.errors && (getTheFormGroup.price.dirty || getTheFormGroup.price.touched || trySend)">
+                <small *ngIf="getTheFormGroup.price.errors.required">Requerido</small>
+                <small *ngIf="getTheFormGroup.price.errors.min">Debe ser mayor a 0</small>
               </div>
+            </div>
 
-              <br />
-
-              <!-- PRICE -->
-              <div class="row">
-                <div class="col-3">Precio</div>
-                <div class="col-9">
-                  <input
-                    type="number"
-                    class="form-control"
-                    [disabled]="mode == 1"
-                    formControlName="price"
-                    min="0.01"
-                    step="0.01"
-                  />
-
-                  <div
-                    *ngIf="
-                      getTheFormGroup.price.errors &&
-                      (getTheFormGroup.price.dirty ||
-                        getTheFormGroup.price.touched ||
-                        trySend)
-                    "
-                  >
-                    <strong
-                      *ngIf="getTheFormGroup.price.errors.required"
-                      class="msnError"
-                      >Requerido</strong>
-                    <strong
-                      *ngIf="getTheFormGroup.price.errors.min"
-                      class="msnError"
-                      >Debe ser mayor a 0</strong>
-                  </div>
-                </div>
+            <div class="form-group mb-4">
+              <label>Categoría</label>
+              <input type="text" class="form-control" formControlName="category" [disabled]="mode == 1">
+              <div class="text-error" *ngIf="getTheFormGroup.category.errors && (getTheFormGroup.category.dirty || getTheFormGroup.category.touched || trySend)">
+                <small *ngIf="getTheFormGroup.category.errors.required">Requerido</small>
+                <small *ngIf="getTheFormGroup.category.errors.minlength">Mínimo 3 caracteres</small>
+                <small *ngIf="getTheFormGroup.category.errors.maxlength">Máximo 50 caracteres</small>
               </div>
+            </div>
 
-              <br />
-
-              <!-- CATEGORY -->
-              <div class="row">
-                <div class="col-3">Categoría</div>
-                <div class="col-9">
-                  <input
-                    type="text"
-                    class="form-control"
-                    [disabled]="mode == 1"
-                    formControlName="category"
-                  />
-
-                  <div
-                    *ngIf="
-                      getTheFormGroup.category.errors &&
-                      (getTheFormGroup.category.dirty ||
-                        getTheFormGroup.category.touched ||
-                        trySend)
-                    "
-                  >
-                    <strong
-                      *ngIf="getTheFormGroup.category.errors.required"
-                      class="msnError"
-                      >Requerido</strong>
-                    <strong
-                      *ngIf="getTheFormGroup.category.errors.minlength"
-                      class="msnError"
-                      >Mínimo 3 caracteres</strong>
-                    <strong
-                      *ngIf="getTheFormGroup.category.errors.maxlength"
-                      class="msnError"
-                      >Máximo 50 caracteres</strong>
-                  </div>
-                </div>
-              </div>
-
-              <br />
-
-              <!-- BUTTONS -->
-              <div class="row">
-                <div class="col-3"></div>
-                <div class="col-9">
-
-                  <button
-                    type="button"
-                    class="btn btn-primary btn-block"
-                    (click)="back()"
-                    *ngIf="mode == 1"
-                  >
-                    Regresar
-                  </button>
-
-                  <button
-                    type="button"
-                    class="btn btn-success btn-block"
-                    (click)="createProduct()"
-                    *ngIf="mode == 2"
-                  >
-                    Crear
-                  </button>
-
-                  <button
-                    type="button"
-                    class="btn btn-warning btn-block"
-                    (click)="upProduct()"
-                    *ngIf="mode == 3"
-                  >
-                    Actualizar
-                  </button>
-
-                  <button
-                    type="button"
-                    class="btn btn-primary btn-block"
-                    (click)="back()"
-                    *ngIf="mode == 2 || mode == 3"
-                  >
-                    Cancelar
-                  </button>
-                </div>
-              </div>
-
+            <div class="d-flex flex-wrap gap-2 justify-content-end">
+              <button type="button" class="btn btn-ice-primary" *ngIf="mode == 1" (click)="back()">Regresar</button>
+              <button type="button" class="btn btn-ice-success" *ngIf="mode == 2" (click)="createProduct()">Crear</button>
+              <button type="button" class="btn btn-ice-warning" *ngIf="mode == 3" (click)="upProduct()">Actualizar</button>
+              <button type="button" class="btn btn-ice-primary" *ngIf="mode == 2 || mode == 3" (click)="back()">Cancelar</button>
             </div>
           </form>
 
         </div>
-
       </div>
     </div>
   </div>

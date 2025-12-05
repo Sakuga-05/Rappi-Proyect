@@ -1,44 +1,49 @@
-<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8"></div>
-<!-- Page content -->
-<div class="container-fluid mt--7">
-    <!-- Table -->
-    <div class="row">
-        <div class="col">
-            <div class="card shadow">
-                <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
-                    <h3 class="mb-0">Restaurantes</h3>
-                    <div>
-                        <button class="btn btn-info btn-md mr-2" [routerLink]="['/restaurants/create']">Crear</button>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <table class="table table-striped table-hover table-bordered align-middle">
-                        <thead class="bg-blue text-white">
-                            <tr>
-                                <th class="px-4 py-3">Nombre</th>
-                                <th class="px-4 py-3">Email</th>
-                                <th class="px-4 py-3">Teléfono</th>
-                                <th class="px-4 py-3">Dirección</th>
-                                <th class="px-4 py-3">Opciones</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr *ngFor="let restaurant of restaurants">
-                                <td class="px-4 py-3">{{restaurant.name}}</td>
-                                <td class="px-4 py-3">{{restaurant.email}}</td>
-                                <td class="px-4 py-3">{{restaurant.phone}}</td>
-                                <td class="px-4 py-3">{{restaurant.address}}</td>
-                                <td class="px-4 py-3">
-                                    <button class="btn btn-warning btn-sm mr-2" [routerLink]="['/restaurants/view', restaurant.id]">Info</button>
-                                    <button class="btn btn-warning btn-sm mr-2" [routerLink]="['/restaurants/update', restaurant.id]">Editar</button>
-                                    <button class="btn btn-danger btn-sm" (click)="deleteRestaurant(restaurant.id)">Eliminar</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+<!-- HEADER DASHBOARD -->
+<div class="header-dashboard">
+  <div class="container-fluid">
+    <div class="header-body">
+      <h1 class="title-dashboard">Restaurantes</h1>
+      <p class="subtitle-dashboard">Administra los restaurantes de manera eficiente y segura</p>
     </div>
+  </div>
+</div>
+
+<!-- PAGE CONTENT -->
+<div class="container-fluid mt--7">
+  <div class="row justify-content-center">
+    <div class="col-lg-12">
+      <div class="card card-ice shadow">
+        <div class="card-header d-flex justify-content-between align-items-center bg-transparent">
+          <h3 class="mb-0">Lista de Restaurantes</h3>
+          <button class="btn btn-ice-primary" [routerLink]="['/restaurants/create']">Crear</button>
+        </div>
+        <div class="card-body table-responsive">
+          <table class="table table-ice table-hover align-middle">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Dirección</th>
+                <th>Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let restaurant of restaurants">
+                <td>{{ restaurant.name }}</td>
+                <td>{{ restaurant.email }}</td>
+                <td>{{ restaurant.phone }}</td>
+                <td>{{ restaurant.address }}</td>
+                <td class="d-flex flex-wrap gap-2">
+                  <button class="btn btn-ice-warning btn-sm" [routerLink]="['/restaurants/view', restaurant.id]">Info</button>
+                  <button class="btn btn-ice-warning btn-sm" [routerLink]="['/restaurants/update', restaurant.id]">Editar</button>
+                  <button class="btn btn-ice-danger btn-sm" (click)="deleteRestaurant(restaurant.id)">Eliminar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
