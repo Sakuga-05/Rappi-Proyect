@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, from } from 'rxjs';
-import { Router } from '@angular/router';
-import { User } from '../models/User';
+import { GithubAuthProvider, GoogleAuthProvider, OAuthProvider } from "@angular/fire/auth";
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { GoogleAuthProvider, GithubAuthProvider } from "@angular/fire/auth";
+import { Router } from '@angular/router';
+import { BehaviorSubject, Observable, from } from 'rxjs';
+import { User } from '../models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -37,12 +37,27 @@ export class SecurityService {
 
   //Inicio de sesión con GitHub
   loginWithGitHub() {
-    return this.authLoginGoogle(new GithubAuthProvider());
+    return this.authLoginGitHub(new GithubAuthProvider());
   }
 
   authLoginGitHub(provider: any) {
     return this.auth.signInWithPopup(provider).then(result => {
       console.log('Usuario Logeado', result);
+      this.setSessionUser(result.user);
+      this.router.navigate(["/dashboard"]);
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
+
+  // Inicio de sesión con Microsoft (OAuthProvider 'microsoft.com')
+  loginWithMicrosoft() {
+    return this.authLoginMicrosoft(new OAuthProvider('microsoft.com'));
+  }
+
+  authLoginMicrosoft(provider: any) {
+    return this.auth.signInWithPopup(provider).then(result => {
+      console.log('Usuario Logeado (Microsoft)', result);
       this.setSessionUser(result.user);
       this.router.navigate(["/dashboard"]);
     }).catch((error) => {

@@ -1,11 +1,11 @@
 export const environment = {
   production: true,
-  firebaseConfig: {
-    apiKey: "AIzaSyB6gE0qp-HzsONoMiLLBi3MsipxUytDpXo",
-    authDomain: "angular-delivery-6ddae.firebaseapp.com",
-    projectId: "angular-delivery-6ddae",
-    storageBucket: "angular-delivery-6ddae.firebasestorage.app",
-    messagingSenderId: "741548381752",
-    appId: "1:741548381752:web:4870af438b82b6f528f8cd"
-  }
+  firebaseConfig : {
+  apiKey: "AIzaSyAqwToQFDAQGDY_HMO1MIBpHl5YDHHYfTk",
+  authDomain: "proyect-security.firebaseapp.com",
+  projectId: "proyect-security",
+  storageBucket: "proyect-security.firebasestorage.app",
+  messagingSenderId: "29089216541",
+  appId: "1:29089216541:web:81ec16958a86712b2e2ef4"
+}
 };
