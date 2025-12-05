@@ -14,6 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { RestaurantComponent } from './pages/restaurant/restaurant.component';
+import { MotorcycleComponent } from './pages/motorcycle/motorcycle.component';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule} from '@angular/fire/compat';
 import { AngularFireAuthModule} from '@angular/fire/compat/auth';
@@ -42,6 +43,7 @@ import { GraficasComponent } from './pages/graficas/graficas.component';
     AdminLayoutComponent,
     AuthLayoutComponent,
     RestaurantComponent,
+    MotorcycleComponent,
     GraficasComponent
   ],
   providers: [{
