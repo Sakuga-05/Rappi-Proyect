@@ -18,7 +18,7 @@ export class ChatbotComponent implements OnInit {
   constructor(private chatbot: ChatbotService) { }
 
   ngOnInit(): void {
-    this.messages.push({ from: 'bot', text: 'Hola 👋 Soy el asistente del sistema. Pregúntame por funciones, registro de conductores o cómo realizar pedidos.' });
+    this.messages.push({ from: 'bot', text: 'Hola 👋 Soy el yeti asistente del sistema. Pregúntame por funciones, registro de conductores o cómo realizar pedidos.' });
     setTimeout(() => this.scrollToBottom(), 50);
   }
 

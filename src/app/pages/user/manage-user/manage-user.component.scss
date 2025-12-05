@@ -1,1 +1,149 @@
-.form-group { margin-bottom: 1rem; }
+/* ===== GLOBAL ===== */
+body {
+  background: linear-gradient(135deg, #0c1d2c 0%, #10344e 60%, #0e2a44 100%);
+  font-family: "Poppins", sans-serif;
+  color: #e8f6ff;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== HEADER ===== */
+.header-users {
+  height: 150px;
+  background: linear-gradient(135deg, #0e2a44, #155377, #1a6a94);
+  border-bottom: 2px solid rgba(120,200,255,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.header-users::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 40% 10%, rgba(255,255,255,0.25), transparent 65%);
+  filter: blur(50px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.header-users .title {
+  font-size: 38px;
+  font-weight: 800;
+  color: #e8f6ff;
+  text-shadow: 0 0 12px rgba(120,200,255,0.4);
+}
+
+/* ===== BACKGROUND IMAGE ===== */
+.cont {
+  background-image: url('../../../../assets/img/fondo.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* ===== WRAPPER ===== */
+.form-wrapper {
+  padding: 60px 40px;
+  display: flex;
+  justify-content: center;
+}
+
+/* ===== CARD FORM ===== */
+.ice-form-card {
+  width: 100%;
+  max-width: 650px;
+  background: #0e2b45;
+  border: 2px solid rgba(120,200,255,0.35);
+  border-radius: 18px;
+  box-shadow: 0 6px 22px rgba(0, 80, 120, 0.35);
+  overflow: hidden;
+  animation: floatCard 7s ease-in-out infinite;
+  transition: 0.3s ease-in-out;
+}
+
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.ice-form-card:hover {
+  box-shadow:
+    0 12px 36px rgba(120,200,255,0.45),
+    0 0 16px rgba(120,220,255,0.35);
+  border-color: rgba(160,230,255,0.7);
+}
+
+/* ===== CARD HEADER ===== */
+.ice-form-header {
+  padding: 18px 26px;
+  background: rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(160,210,255,0.25);
+  font-weight: 700;
+  color: #dff3ff;
+}
+
+/* ===== CARD BODY ===== */
+.ice-form-body {
+  padding: 28px;
+}
+
+/* ===== INPUT GROUP ===== */
+.ice-input-group {
+  margin-bottom: 18px;
+}
+
+.ice-input-group label {
+  font-weight: 600;
+  color: #d9efff;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.ice-input {
+  width: 100%;
+  padding: 10px;
+  background: rgba(255,255,255,0.08);
+  border: 2px solid rgba(160,210,255,0.25);
+  border-radius: 10px;
+  color: #e8f6ff;
+  transition: 0.25s ease;
+}
+
+.ice-input:focus {
+  border-color: rgba(120,200,255,0.8);
+  box-shadow: 0 0 10px rgba(120,200,255,0.5);
+  outline: none;
+}
+
+/* ===== BUTTON ===== */
+.ice-btn-lg {
+  width: 100%;
+  background: #0097d6;
+  border: 1px solid #9bdfff;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 0 10px rgba(0,200,255,0.25);
+  transition: 0.25s ease;
+}
+
+.ice-btn-lg:hover {
+  background: #00e9ff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 16px rgba(120,220,255,0.6);
+}
+
+/* ===== ACTIONS ===== */
+.form-actions {
+  margin-top: 15px;
+  text-align: right;
+}
+
+h3 {
+  color: white;
+}
