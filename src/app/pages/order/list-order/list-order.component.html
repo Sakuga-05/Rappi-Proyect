@@ -5,8 +5,8 @@
             <div class="card shadow">
                 <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
                     <h3 class="mb-0">Pedidos</h3>
-                    <div>
-                        <button class="btn btn-info btn-md mr-2" [routerLink]="['/orders/create']">Crear</button>
+                    <div class="ml-3">
+                        <button class="btn btn-sm btn-secondary" [routerLink]="['/addresses/list']">Ver Direcciones</button>
                     </div>
                 </div>
                 <div class="card-body">
@@ -14,27 +14,33 @@
                         <thead class="bg-blue text-white">
                             <tr>
                                 <th class="px-4 py-3">Cliente</th>
+                                <th class="px-4 py-3">Restaurante</th>
+                                <th class="px-4 py-3">Producto</th>
+                                <th class="px-4 py-3">Cantidad</th>
+                                <th class="px-4 py-3">Dirección</th>
+                                <th class="px-4 py-3">Placa Moto</th>
                                 <th class="px-4 py-3">Total</th>
                                 <th class="px-4 py-3">Estado</th>
-                                <th class="px-4 py-3">Dirección</th>
-                                <th class="px-4 py-3">Fecha</th>
                                 <th class="px-4 py-3">Opciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let order of orders">
                                 <td class="px-4 py-3">{{ getCustomerName(order.customer_id) }}</td>
-                                <td class="px-4 py-3">${{ order.total }}</td>
+                                <td class="px-4 py-3">{{ getMenuInfo(order.menu_id).restaurantName }}</td>
+                                <td class="px-4 py-3">{{ getMenuInfo(order.menu_id).productName }}</td>
+                                <td class="px-4 py-3">{{ order.quantity }}</td>
+                                <td class="px-4 py-3">{{ getAddressByOrderId(order.id) }}</td>
+                                <td class="px-4 py-3">{{ getMotorcyclePlate(order.motorcycle_id) }}</td>
+                                <td class="px-4 py-3">${{ order.total_price }}</td>
                                 <td class="px-4 py-3">
                                     <span *ngIf="order.status === 'pending'" class="badge badge-warning">Pendiente</span>
                                     <span *ngIf="order.status === 'preparing'" class="badge badge-info">Preparando</span>
                                     <span *ngIf="order.status === 'ready'" class="badge badge-success">Listo</span>
                                     <span *ngIf="order.status === 'delivered'" class="badge badge-primary">Entregado</span>
                                 </td>
-                                <td class="px-4 py-3">{{ getAddressInfo(order.address_id) }}</td>
-                                <td class="px-4 py-3">{{ order.created_at | date: 'short' }}</td>
                                 <td class="px-4 py-3">
-                                    <button class="btn btn-warning btn-sm mr-2" [routerLink]="['/orders/view', order.id]">Info</button>
+                                    <button class="btn btn-warning btn-sm mr-2" [routerLink]="['/addresses/create']" [queryParams]="{ order_id: order.id }">Agregar Dirección</button>
                                     <button class="btn btn-warning btn-sm mr-2" [routerLink]="['/orders/update', order.id]">Editar</button>
                                     <button class="btn btn-danger btn-sm" (click)="deleteOrder(order.id)">Eliminar</button>
                                 </td>

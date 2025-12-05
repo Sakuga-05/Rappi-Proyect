@@ -22,9 +22,13 @@
                 <option *ngFor="let m of motorcycles" [value]="m.id">{{ m.license_plate }}</option>
               </select>
             </div>
+            <div *ngIf="selectedMenu" class="form-group">
+              <label>Menú seleccionado</label>
+              <div class="form-control-plaintext">{{ selectedMenu?.name || ('#' + selectedMenu?.id) }} - ${{ selectedMenu?.price }}</div>
+            </div>
             <div class="form-group">
-              <label>Total</label>
-              <input formControlName="total" class="form-control" type="number" step="0.01" />
+              <label>Cantidad</label>
+              <input formControlName="quantity" class="form-control" type="number" min="1" />
             </div>
             <div class="form-group">
               <label>Estado</label>
