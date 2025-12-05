@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   url_backend: "http://127.0.0.1:5000",
   firebaseConfig : {
-  apiKey: "AIzaSyAqwToQFDAQGDY_HMO1MIBpHl5YDHHYfTk",
+  apiKey: "AIzaSyCgD2kq7mmf869-zzQh0slpSmvmd7O2A9Y",
   authDomain: "proyect-security.firebaseapp.com",
   projectId: "proyect-security",
   storageBucket: "proyect-security.firebasestorage.app",
