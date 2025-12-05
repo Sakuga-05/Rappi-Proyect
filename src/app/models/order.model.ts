@@ -1,8 +1,10 @@
 export class Order {
   id: number;
-  customer_id: number;
+  customer_id?: number;
+  menu_id?: number;
+  motorcycle_id?: number;
+  quantity?: number;
   total?: number;
   status?: string; // pending, preparing, ready, delivered
-  address_id?: number; // Relación 1:1 con Address
   created_at?: string;
 }

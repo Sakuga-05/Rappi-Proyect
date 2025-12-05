@@ -27,7 +27,7 @@ export class ViewRestaurantMenuComponent implements OnInit {
   }
 
   viewMenu(restaurantId: number) {
-    // Redirige al listado de menús filtrados por restaurante
-    this.router.navigate(['/menus'], { queryParams: { restaurantId: restaurantId } });
+    // Redirige a la vista de cliente de menús (orders/menu) pasando restaurantId
+    this.router.navigate(['/orders/menu'], { queryParams: { restaurantId: restaurantId } });
   }
 }

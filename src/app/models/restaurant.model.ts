@@ -1,8 +1,8 @@
 export class Restaurant {
     id: number;
     name?: string;
-    email?: string;
-    phone?: string;
     address?: string;
+    phone?: string;
+    email?: string;
     created_at?: Date;
 }
