@@ -1,0 +1,169 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+/* ===================== RESET ===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: 'Poppins', sans-serif;
+  color: #d9efff;
+  background: radial-gradient(circle at bottom, #0d2740, #0a1b2e, #03101e);
+  min-height: 100vh;
+}
+
+/* ===================== NIEBLA POLAR ===================== */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.07), transparent 70%);
+  pointer-events: none;
+  animation: winterFog 22s linear infinite;
+}
+
+@keyframes winterFog {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(20px) translateX(-10px); }
+  100% { transform: translateY(0); }
+}
+
+/* ===================== HEADER ===================== */
+.header {
+  height: 120px;
+  background: linear-gradient(135deg, #123a57, #165072, #1a6a94);
+  border-bottom: 1px solid rgba(180,220,255,0.4);
+  box-shadow: 0 6px 18px rgba(0, 60, 100, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  color: #e8f6ff;
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* ===================== CONTAINER ===================== */
+.container-fluid {
+  padding: 40px 24px;
+  background-image: url('../../../../assets/img/fondo.png');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+/* ===================== CARD ICE ===================== */
+.card {
+  background: linear-gradient(145deg, #0e2a44, #123a57);
+  border: 2px solid rgba(120,200,255,0.4);
+  border-radius: 22px;
+  padding: 24px;
+  color: #e8f6ff;
+  box-shadow:
+    0 8px 18px rgba(0, 100, 150, 0.35),
+    inset 0 0 14px rgba(255,255,255,0.07);
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+
+/* ===================== FORM GROUP ===================== */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #d9efff;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 2px solid rgba(75,207,255,0.3);
+  background: rgba(0,0,0,0.2);
+  color: #e8f6ff;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #4bcfff;
+  outline: none;
+  box-shadow: 0 0 8px rgba(75,207,255,0.5);
+}
+
+.is-invalid {
+  border-color: #ff6b6b !important;
+  background: rgba(255,107,107,0.1);
+}
+
+.invalid-feedback {
+  color: #ff6b6b;
+  font-size: 0.75rem;
+  margin-top: 4px;
+}
+
+/* ===================== BOTONES ICE ===================== */
+.btn {
+  border-radius: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #666, #999);
+  border: 2px solid #b4b4b4;
+  color: #e8f6ff;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, #999, #ccc);
+  transform: translateY(-2px);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #0079b7, #4bcfff);
+  border: 2px solid #b4e7ff;
+  color: #e8f6ff;
+  box-shadow: 0 4px 14px rgba(0, 190, 255, 0.3);
+}
+
+.btn-success:hover {
+  background: linear-gradient(135deg, #00e4ff, #0099cc);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,230,255,0.4), 0 0 12px rgba(255,255,255,0.65);
+  animation: pulseIce 0.7s ease;
+}
+
+@keyframes pulseIce {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(1.4); }
+  100% { filter: brightness(1); }
+}
+
+/* ===================== FLEX BUTTONS ===================== */
+.d-flex.justify-content-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 768px) {
+  .card { padding: 16px; }
+  .form-control { font-size: 0.8rem; padding: 6px 10px; }
+  .btn { font-size: 0.75rem; padding: 6px 10px; }
+}

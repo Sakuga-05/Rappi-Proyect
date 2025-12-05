@@ -1,0 +1,94 @@
+/* ===================== FORM ICE ===================== */
+.form-ice {
+  background: linear-gradient(145deg, #0e2a44, #123a57);
+  border: 2px solid rgba(120,200,255,0.4);
+  border-radius: 12px;
+  color: #e8f6ff;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  width: 100%;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.form-ice:focus {
+  border-color: #4bcfff;
+  box-shadow: 0 0 12px rgba(75,207,255,0.4);
+  outline: none;
+  background: linear-gradient(145deg, #123a57, #0e2a44);
+  color: #fff;
+}
+
+/* BOTONES ICE */
+.btn-ice-success {
+  background: linear-gradient(135deg, #28a745, #63e47b);
+  border: 2px solid #8ff2a1;
+  color: #0d2740;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 8px 14px;
+  transition: all 0.3s ease;
+}
+
+.btn-ice-success:hover {
+  background: linear-gradient(135deg, #63e47b, #28a745);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,230,255,0.4);
+}
+
+/* INVALID FEEDBACK ICE */
+.is-invalid {
+  border-color: #ff4b4b !important;
+  background-color: rgba(255, 75, 75, 0.1);
+}
+
+.invalid-feedback {
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+/* ===================== CARD ICE ===================== */
+.card-ice {
+  background: linear-gradient(145deg, #0e2a44, #123a57);
+  border: 2px solid rgba(120,200,255,0.4);
+  border-radius: 22px;
+  padding: 24px;
+  color: #e8f6ff;
+  box-shadow:
+    0 8px 18px rgba(0, 100, 150, 0.35),
+    inset 0 0 14px rgba(255,255,255,0.07);
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+
+/* ===================== HEADER ===================== */
+.header {
+  height: 120px;
+  background: linear-gradient(135deg, #123a57, #165072, #1a6a94);
+  border-bottom: 1px solid rgba(180,220,255,0.4);
+  box-shadow: 0 6px 18px rgba(0, 60, 100, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header h1 {
+  color: #e8f6ff;
+  font-weight: 700;
+}
+
+.container-fluid {
+  padding: 40px 24px;
+  background-image: url('../../../../assets/img/fondo.png');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 768px) {
+  .form-ice { padding: 8px 12px; }
+  .btn-ice-success { padding: 6px 12px; font-size: 0.85rem; }
+}

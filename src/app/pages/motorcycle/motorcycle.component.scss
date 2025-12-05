@@ -1,23 +1,187 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
-/* Center the card vertically (50vh) */
-.center-viewport {
-  min-height: 50vh;
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Fixed card width (responsive-friendly) */
+body, html {
+  font-family: 'Poppins', sans-serif;
+  color: #d9efff;
+  background: radial-gradient(circle at bottom, #0d2740, #0a1b2e, #03101e);
+  min-height: 100vh;
+}
+
+/* NIEBLA POLAR */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.07), transparent 70%);
+  pointer-events: none;
+  animation: winterFog 22s linear infinite;
+}
+
+@keyframes winterFog {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(20px) translateX(-10px); }
+  100% { transform: translateY(0); }
+}
+
+/* HEADER */
+.header {
+  height: 120px;
+  background: linear-gradient(135deg, #123a57, #165072, #1a6a94);
+  border-bottom: 1px solid rgba(180,220,255,0.4);
+  box-shadow: 0 6px 18px rgba(0, 60, 100, 0.35);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  color: #e8f6ff;
+}
+
+/* CONTENEDOR FONDO */
+.container-fluid {
+  background-image: url('../../../assets/img/fondo.png');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  padding-top: 40px;
+}
+
+/* GRID DE CARDS */
+.cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+  padding: 32px 48px;
+  justify-items: center;
+}
+
+/* CARD ICE */
 .card-sm {
-  width: 15rem;
-  max-width: 90%;
-  border: 2px solid;
-  border-color: black;
+  max-width: 320px;
+  background: linear-gradient(145deg, #0e2a44, #123a57);
+  border: 2px solid rgba(120,200,255,0.4);
+  border-radius: 22px;
+  padding: 24px;
+  color: #e8f6ff;
+
+  box-shadow:
+    0 8px 18px rgba(0, 100, 150, 0.35),
+    inset 0 0 14px rgba(255,255,255,0.07);
+
+  backdrop-filter: blur(6px);
+
+  transition: all 0.3s ease;
+  transform: translateY(10px);
+  opacity: 0;
+  animation: popIn .45s ease forwards;
 }
 
-/* Icon circle size and icon scale */
-.icon-circle {
-  width: 55px;
-  height: 55px;
+.card-sm:hover {
+  transform: translateY(-6px) scale(1.04);
+  border-color: #7dd7ff;
+  box-shadow:
+    0 16px 30px rgba(0, 150, 255, 0.45),
+    0 0 26px rgba(120,200,255,0.6);
 }
-.icon-circle i {
-  font-size: 22px;
+
+@keyframes popIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ICONOS CIRCULARES */
+.icon-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid #4bcfff;
+  background: rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px auto;
+  box-shadow:
+    0 0 10px rgba(75,207,255,0.4),
+    inset 0 0 14px rgba(255,255,255,0.35);
+}
+
+.icon-circle-yeti {
+  background-image: url('../../../assets/img/yeti.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* BOTONES ICE */
+.btn {
+  background: linear-gradient(135deg, #0079b7, #4bcfff);
+  border: 2px solid #b4e7ff;
+  border-radius: 14px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 10px 14px;
+  box-shadow: 0 4px 14px rgba(0, 190, 255, 0.3);
+  transition: all .3s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, #00e4ff, #0099cc);
+  transform: translateY(-3px);
+  box-shadow:
+    0 8px 20px rgba(0,230,255,0.4),
+    0 0 15px rgba(255,255,255,0.65);
+  animation: pulseIce 0.7s ease;
+}
+
+@keyframes pulseIce {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(1.4); }
+  100% { filter: brightness(1); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+  .cards-wrapper {
+    gap: 24px;
+    padding: 24px 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cards-wrapper {
+    grid-template-columns: 1fr;
+    padding: 16px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .card-sm {
+    padding: 20px 16px;
+  }
+
+  .icon-circle {
+    width: 60px;
+    height: 60px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
 }
