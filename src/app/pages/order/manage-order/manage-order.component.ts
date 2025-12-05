@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from 'src/app/models/customer.model';
-import { Order } from 'src/app/models/order.model';
-import { Motorcycle } from 'src/app/models/motorcycle.model';
 import { Menu } from 'src/app/models/menu.model';
+import { Motorcycle } from 'src/app/models/motorcycle.model';
+import { Order } from 'src/app/models/order.model';
 import { CustomerService } from 'src/app/services/customer.service';
-import { OrderService } from 'src/app/services/order.service';
 import { MotorcycleService } from 'src/app/services/motorcycle.service';
+import { OrderService } from 'src/app/services/order.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -79,9 +79,54 @@ export class ManageOrderComponent implements OnInit {
 
     if (this.id) {
       order.id = this.id;
-      this.service.update(order).subscribe(() => { Swal.fire('Actualizado','OK','success'); this.router.navigate(['/orders/list']); });
+      this.service.update(order).subscribe(() => {
+        // reproducir sonido y dejar 300ms para que suene antes de navegar
+        this.playSaveSound();
+        setTimeout(() => {
+          Swal.fire('Actualizado','OK','success');
+          this.router.navigate(['/orders/list']);
+        }, 300);
+      });
     } else {
-      this.service.create(order).subscribe(() => { Swal.fire('Creado','OK','success'); this.router.navigate(['/orders/list']); });
+      this.service.create(order).subscribe(() => {
+        // reproducir sonido y dejar 300ms para que suene antes de navegar
+        this.playSaveSound();
+        setTimeout(() => {
+          Swal.fire('Creado','OK','success');
+          this.router.navigate(['/orders/list']);
+        }, 300);
+      });
+    }
+  }
+
+  // Reproduce un beep corto usando WebAudio (compatible con la mayoría de navegadores)
+  playSaveSound() {
+    try {
+      const AudioCtx = (window as any).AudioContext || (window as any).webkitAudioContext;
+      if (!AudioCtx) return;
+      const ctx = new AudioCtx();
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.type = 'sine';
+      o.frequency.value = 660; // frecuencia en Hz (tono más grave que el beep del menú)
+      // envelope: inicio suave, pico, y desvanecimiento
+      const now = ctx.currentTime;
+      g.gain.setValueAtTime(0.0001, now);
+      g.gain.linearRampToValueAtTime(0.12, now + 0.01);
+      o.connect(g);
+      g.connect(ctx.destination);
+      o.start(now);
+      // duración total ~500ms
+      g.gain.linearRampToValueAtTime(0.0001, now + 0.5);
+      try {
+        o.stop(now + 0.51);
+      } catch (e) { }
+      // cerrar contexto unos ms después
+      setTimeout(() => {
+        if (ctx.close) ctx.close();
+      }, 620);
+    } catch (err) {
+      console.warn('Audio not available', err);
     }
   }
 }

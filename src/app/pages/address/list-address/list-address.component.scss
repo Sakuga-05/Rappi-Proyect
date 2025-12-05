@@ -1,7 +1,8 @@
 /* ===== GLOBAL ===== */
 body, html {
   font-family: 'Poppins', sans-serif;
-  background-image: url('../../../assets/img/fondo.png');
+  /* use absolute asset path so Angular can resolve it during build */
+  background-image: url('/assets/img/fondo.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
