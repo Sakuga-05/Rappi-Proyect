@@ -33,6 +33,10 @@ export class ManageMenuComponent implements OnInit {
     private restaurantService: RestaurantService
   ) {
     this.menu = { id: 0, product_id: 0, restaurant_id: 0 };
+    this.configFormGroup();
+  }
+
+  configFormGroup() {
     this.theForm = this.fb.group({
       id: [0, []],
       product_id: [0, [Validators.required]],

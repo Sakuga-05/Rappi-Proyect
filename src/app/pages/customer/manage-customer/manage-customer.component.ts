@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 export class ManageCustomerComponent implements OnInit {
   form: FormGroup;
   id?: number;
+  isView: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -20,10 +21,14 @@ export class ManageCustomerComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
+    this.configFormGroup();
+  }
+
+  configFormGroup() {
     this.form = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['']
+      phone: ['', [Validators.minLength(6)]]
     });
   }
 
@@ -31,7 +36,11 @@ export class ManageCustomerComponent implements OnInit {
     this.route.params.subscribe(params => {
       if (params['id']) {
         this.id = +params['id'];
-        this.service.getById(this.id).subscribe(c => this.form.patchValue(c));
+        this.isView = this.router.url.includes('/view/');
+        this.service.getById(this.id).subscribe(c => {
+          this.form.patchValue(c);
+          if (this.isView) this.form.disable();
+        });
       }
     })
   }

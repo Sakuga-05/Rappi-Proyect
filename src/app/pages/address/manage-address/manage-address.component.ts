@@ -17,6 +17,7 @@ export class ManageAddressComponent implements OnInit {
   id?: number;
   orders: Order[] = [];
   orderIdLocked: boolean = false;
+  isView: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -25,14 +26,7 @@ export class ManageAddressComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.form = this.fb.group({
-      order_id: ['', Validators.required],
-      street: ['', Validators.required],
-      city: ['', Validators.required],
-      state: ['', Validators.required],
-      postal_code: ['', Validators.required],
-      additional_info: ['']
-    });
+    this.configFormGroup();
   }
 
   ngOnInit(): void {
@@ -40,7 +34,11 @@ export class ManageAddressComponent implements OnInit {
     this.route.params.subscribe(params => {
       if (params['id']) {
         this.id = +params['id'];
-        this.service.getById(this.id).subscribe(a => this.form.patchValue(a));
+        this.isView = this.router.url.includes('/view/');
+        this.service.getById(this.id).subscribe(a => {
+          this.form.patchValue(a);
+          if (this.isView) this.form.disable();
+        });
       }
     });
     // Capturar el order_id desde queryParams si viene del formulario de crear
@@ -50,6 +48,17 @@ export class ManageAddressComponent implements OnInit {
         this.orderIdLocked = true;
         this.form.get('order_id')?.disable();
       }
+    });
+  }
+
+  configFormGroup() {
+    this.form = this.fb.group({
+      order_id: ['', Validators.required],
+      street: ['', Validators.required],
+      city: ['', Validators.required],
+      state: ['', Validators.required],
+      postal_code: ['', Validators.required],
+      additional_info: ['']
     });
   }
 

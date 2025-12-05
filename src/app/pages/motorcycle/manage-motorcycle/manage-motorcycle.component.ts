@@ -21,6 +21,10 @@ export class ManageMotorcycleComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
+    this.configFormGroup();
+  }
+
+  configFormGroup() {
     this.form = this.fb.group({
       license_plate: ['', Validators.required],
       brand: ['', Validators.required],

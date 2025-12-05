@@ -64,8 +64,8 @@
                         </div>
 
                         <div class="d-flex justify-content-between">
-                            <button type="button" class="btn btn-secondary" [routerLink]="['/shifts/list']">Volver</button>
                             <button type="submit" class="btn btn-success" *ngIf="!isView">Guardar</button>
+                            <button type="button" class="btn btn-secondary" *ngIf="isView" [routerLink]="['/shifts/list']">Volver</button>
                         </div>
                     </form>
                 </div>

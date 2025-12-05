@@ -31,15 +31,8 @@ export class ManageIssueComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) { }
-
   ngOnInit(): void {
-    this.form = this.fb.group({
-      motorcycle_id: [0, [Validators.required, Validators.min(1)]],
-      issue_type: ['', Validators.required],
-      description: ['', Validators.required],
-      status: ['reported', Validators.required],
-      date_reported: ['', Validators.required]
-    });
+    this.configFormGroup();
 
     this.motorcycleService.getAll().subscribe(data => this.motorcycles = data);
 
@@ -89,6 +82,16 @@ export class ManageIssueComponent implements OnInit {
         reader.readAsDataURL(file);
       }
     }
+  }
+
+  configFormGroup() {
+    this.form = this.fb.group({
+      motorcycle_id: [0, [Validators.required, Validators.min(1)]],
+      issue_type: ['', Validators.required],
+      description: ['', Validators.required],
+      status: ['reported', Validators.required],
+      date_reported: ['', Validators.required]
+    });
   }
 
   removeNewPhoto(index: number) {
