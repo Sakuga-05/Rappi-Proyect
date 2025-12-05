@@ -1,49 +1,140 @@
-/* src/app/charts-view/charts-view.component.scss */
+/* === FONDO GENERAL AZUL CLARO === */
+body, html {
+  font-family: 'Poppins', sans-serif;
+  color: #1a4d6d;
+  background: linear-gradient(135deg, #e0f4ff 0%, #d0e8ff 50%, #c5dff8 100%);
+}
+
+/* Contenedor */
+.cont {
+  background-image: url('../../../assets/img/fondo.png');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+/* === HEADER FRÍO === */
+.header {
+  height: 65px;
+  background: linear-gradient(
+    135deg,
+    #6bb6d6 0%,
+    #7ec8e3 50%,
+    #8dd9f0 100%
+  );
+  box-shadow: 0 4px 20px rgba(107, 182, 214, 0.25);
+  border-bottom: 4px solid #a8e6f7;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* NIEBLA HIELO SUAVE */
+.header::after {
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: -60px;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255,255,255,0.25),
+    transparent 75%
+  );
+  filter: blur(45px);
+  animation: frostWave 12s linear infinite;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+@keyframes frostWave {
+  from { transform: translateX(-80px); }
+  to   { transform: translateX(160px); }
+}
+
+/* === GRID === */
 .charts-container {
-  padding: 16px;
-  font-family: Roboto, Arial, sans-serif;
+  padding: 25px;
+  min-height: 100vh;
 }
 
-.loader {
-  text-align: center;
-  font-weight: 600;
+/* === CARD AZUL PASTEL === */
+.card {
+  background: linear-gradient(135deg, #e8f7ff 0%, #d4efff 50%, #c7e9ff 100%);
+  border: 3px solid #89d6ff;
+  border-radius: 22px;
   padding: 24px;
+  box-shadow: 0 8px 32px rgba(0, 180, 216, 0.2);
+  transition: all 0.3s ease;
+  animation: popIn .5s ease-out forwards;
+  opacity: 0;
+  transform: translateY(15px);
 }
 
+.card:hover {
+  transform: translateY(-8px) scale(1.05);
+  border-color: #4bcfff;
+  box-shadow:
+    0 12px 40px rgba(75, 207, 255, 0.35),
+    0 0 30px rgba(0, 212, 255, 0.25);
+}
+
+@keyframes popIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === TITULOS === */
+.card h3 {
+  color: #0077cc;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 14px;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 6px rgba(0, 119, 204, 0.15);
+  font-size: 1.1rem;
+}
+
+/* Subrayado */
+.card h3::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 4px;
+  margin: 8px auto 0;
+  background: linear-gradient(90deg, #4bcfff, #00d4ff);
+  border-radius: 2px;
+}
+
+/* === LOADER / ERROR === */
+.loader,
 .error {
-  color: #b00020;
-  font-weight: 600;
-  padding: 16px;
+  color: #0077cc;
+  font-weight: 700;
+  text-align: center;
+  font-size: 1.05rem;
 }
 
-/* grid 3x3 responsive */
+/* GRID */
 .grid {
   display: grid;
-  gap: 16px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 24px;
 }
 
-/* cada "card" con sombra suave */
-.card {
-  background: #fff;
-  border-radius: 8px;
-  padding: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  min-height: 280px;
-}
-
-.card h3 {
-  margin: 0 0 8px 0;
-  font-size: 1rem;
-  text-align: center;
-}
-
-/* canvas ocupa todo el espacio disponible */
-canvas {
-  width: 100% !important;
-  height: 200px !important;
-  align-self: center;
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .card {
+    margin-top: 20px;
+  }
 }
